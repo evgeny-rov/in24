@@ -12,40 +12,19 @@ const actionTypes = {
 
 const initialState = {
   tasks: [
-    { id: 0, text: 'this is your first task' },
-    { id: 1, text: 'this is your second task' },
+    { id: 0, text: 'this is your first task', complete: false },
+    { id: 1, text: 'this is your second task', complete: false },
+    { id: 2, text: 'this is your third complete task', complete: true },
   ],
-  completeTasksIds: [1],
 };
 
 const rootReducer = (state: any = initialState, action: any) => {
   switch(action.type) {
-    case 'ADD_TASK': 
-      const { text } = action.payload;
-      const { tasks } = state;
-      const newState = {
-        ...state,
-        tasks: [
-          ...tasks,
-          { id: tasks.length, text },
-        ],
-      };
-      return newState;
-      break;
+    case 'ADD_TODO': 
+      console.log('task added', action)
+      return state;
     case 'TOGGLE_TASK':
-      const { id } = action.payload;
-      const { completeTasksIds } = state;
-      const isTaskComplete = completeTasksIds.includes(id);
-      const newCompleteIds = isTaskComplete 
-        ? completeTasksIds.filter((taskId: number) => taskId !== id)
-        : [...completeTasksIds, id];
-
-      console.log(isTaskComplete, newCompleteIds)
-      const newState2 = {
-        ...state,
-        completeTasksIds: newCompleteIds,
-      }
-      return newState2;
+      return state;
     default: 
       return state;
     

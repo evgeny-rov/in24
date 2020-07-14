@@ -36,14 +36,6 @@ code {
   position: relative;
 }
 
-.task-container::after {
-  content: '';
-  height: 70%;
-  width: 1px;
-  background-color: grey;
-  position: absolute;
-}
-
 .user-input {
   position: absolute;
   bottom: 0;
