@@ -9,18 +9,16 @@ interface props {
 const UserInput = ({ addTask }: props) => {
   const [text, setText] = useState('');
 
-  const handleAddTodo = (e: React.SyntheticEvent) => {
+  const handleAddTask = (e: React.SyntheticEvent) => {
     e.preventDefault();
-    if (text === '') return;
-
     addTask(text);
     setText('');
   };
 
   return (
     <div className="user-input">
-      <input type="text" placeholder="New task..." value={text} onChange={(e) => setText(e.target.value)} />
-      <input type="submit" value="Add" onClick={handleAddTodo} />
+      <input className="input field" type="text" placeholder="New task..." value={text} onChange={(e) => setText(e.target.value)} />
+      <input className="input sbmt-btn" type="submit" value="Add" disabled={text.length < 2} onClick={handleAddTask} />
     </div>
   );
 }

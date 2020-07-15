@@ -16,17 +16,23 @@ const initialState = {
 const rootReducer = (state: any = initialState, action: any) => {
   switch(action.type) {
     case 'ADD_TASK': 
-      console.log('task added', action)
-      return state;
-    case 'TOGGLE_TASK':
-      const { id } = action.payload;
+      const { id: addId, text } = action.payload;
       return {
         ...state,
         tasks: {
           ...state.tasks,
-          [id]: {
-            ...state.tasks[id],
-            isComplete: !state.tasks[id].isComplete,
+          [addId]: { id: addId, text, isComplete: false },
+        }
+      };
+    case 'TOGGLE_TASK':
+      const { id: toggleId } = action.payload;
+      return {
+        ...state,
+        tasks: {
+          ...state.tasks,
+          [toggleId]: {
+            ...state.tasks[toggleId],
+            isComplete: !state.tasks[toggleId].isComplete,
           }
         }
       };
