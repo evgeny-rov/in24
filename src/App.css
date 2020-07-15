@@ -51,30 +51,10 @@ code {
   overflow: auto;
 }
 
-.task-list.complete {
+.task-list > li {
+  cursor: pointer;
+}
+
+.task-list > li.complete {
   text-decoration: line-through;
-}
-
-.tasks {
-  height: 70%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
-
-.tasks-block {
-  position: relative;
-  height: 100%;
-  width: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 2px;
-}
-
-.tasks-block > span {
-  position: absolute;
-  top: 5px;
-  border-bottom: 1px solid grey;
 }

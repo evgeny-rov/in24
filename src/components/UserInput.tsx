@@ -1,15 +1,19 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { addTodo } from '../actions/actions';
+import { addTask } from '../actions/actions';
 
-const UserInput = (props: any) => {
+interface props {
+  addTask: (text: string) => {};
+}
+
+const UserInput = ({ addTask }: props) => {
   const [text, setText] = useState('');
 
   const handleAddTodo = (e: React.SyntheticEvent) => {
     e.preventDefault();
     if (text === '') return;
 
-    props.addTodo(text);
+    addTask(text);
     setText('');
   };
 
@@ -23,5 +27,5 @@ const UserInput = (props: any) => {
 
 export default connect(
   null,
-  { addTodo }
+  { addTask }
 )(UserInput)
