@@ -1,3 +1,9 @@
+:root {
+  --main-color: grey;
+  --accent-color: #fff;
+  --accent-color2: rgb(231, 71, 106);
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -12,10 +18,10 @@ code {
     monospace;
 }
 
-
 .App {
+  position: absolute;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background: linear-gradient(-45deg, rgb(31, 31, 31) 0%, rgb(48, 48, 48) 100%);
   display: flex;
   justify-content: center;
@@ -38,29 +44,53 @@ code {
   overflow: hidden;
 }
 
-.task-list {
+#task-list {
   list-style: none;
   height: 70%;
   width: 80%;
-  padding: 0;
-  margin: 1em;
   text-align: left;
-  overflow: auto;
+  overflow-y: auto;
+  line-height: 2rem;
 }
 
-.task-list li {
+#task-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+#task-list::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.452);
+	border-radius: 10px;
+}
+
+#task-list::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+	background: grey;
+}
+
+#task-list li {
+  position: relative;
   cursor: pointer;
-  user-select: none;
   transition: all .5s;
+  word-wrap: break-word;
 }
 
-.task-list li.complete {
+li::first-letter {
+  text-transform: uppercase;
+}
+
+li input {
+  position: absolute;
+  left: -2rem;
+  transform: translateY(50%);
+}
+
+#task-list li:hover {
+  font-size: 1.05rem;
+}
+
+#task-list li.complete {
   text-decoration: line-through;
   color: grey;
-}
-
-.task-list li:hover {
-  font-size: 1.05rem;
 }
 
 .user-input {
@@ -68,7 +98,8 @@ code {
   box-sizing: border-box;
   bottom: 0;
   width: 100%;
-  height: 2.5rem;
+  height: 2rem;
+  opacity: 0.9;
 }
 
 .input {
@@ -76,7 +107,7 @@ code {
   position: absolute;
   padding: 0.5rem;
   border: none;
-  outline: none;
+  height: 100%;
 }
 
 .field {
@@ -91,10 +122,10 @@ code {
   right: 0;
   color: #fff;
   width: 20%;
-  background: rgb(231, 71, 106);
+  background: var(--accent-color2);
   transition: all .4s;
   z-index: 5;
-  box-shadow: -3px 0 4px rgb(231, 71, 106);
+  box-shadow: 0 0 4px var(--accent-color2);
 }
 
 .sbmt-btn:disabled {
@@ -103,11 +134,44 @@ code {
   box-shadow: inset 1px 0 3px rgb(36, 36, 36);
 }
 
+.completion-container {
+  position: absolute;
+  box-sizing: border-box;
+  top: 0;
+  width: 100%;
+  height: 2rem;
+}
+
+#progress-status {
+  position: absolute;
+  top: 0;
+  border: none;
+  width: 100%;
+  height: 0.3rem;
+  opacity: 0.9;
+}
+
+#progress-status::-webkit-progress-bar {
+  background: #FFF;
+}
+
+#progress-status::-webkit-progress-value {
+  background: var(--accent-color2);
+  transition: all .7s;
+}
+
+.complete-notify {
+  position: absolute;
+  box-sizing: border-box;
+  padding: 1rem;
+  width: 100%;
+  text-align: center;
+  transition: all .5s;
+}
+
 @media (max-width: 35rem) {
   .task-container {
-    height: 80vh;
+    height: 100%;
     width: 100%;
-    background: none;
-    box-shadow: none;
   }
 }

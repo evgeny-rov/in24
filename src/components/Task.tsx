@@ -12,7 +12,12 @@ interface props {
 const Task = ({ id, text, isComplete, toggleTask }: props) => {
   const clsNames = isComplete ? 'complete': '';
 
-return (<li className={clsNames} onClick={() => toggleTask(id)}>{id + 1}: {text}</li>);
+return (
+    <li className={clsNames} onClick={() => toggleTask(id)}>
+      <input type="checkbox" name="complete" readOnly checked={isComplete}/>
+      <span>{text}</span>
+    </li>
+  );
 }
 
 export default connect(null, { toggleTask })(Task);

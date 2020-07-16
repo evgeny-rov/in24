@@ -1,12 +1,14 @@
 import React from 'react';
-import UserInput from './UserInput';
+import AddTodo from './AddTodo';
 import TaskList from './TaskList';
+import CompletionStatus from './CompletionStatus';
 
 const TaskContainer = (props: any) => {
 	return (
 		<div className="task-container">
+      <CompletionStatus />
       <TaskList />
-			<UserInput />
+			<AddTodo />
 		</div>
 	);
 } 

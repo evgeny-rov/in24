@@ -6,7 +6,7 @@ interface props {
   addTask: (text: string) => {};
 }
 
-const UserInput = ({ addTask }: props) => {
+const AddTodo = ({ addTask }: props) => {
   const [text, setText] = useState('');
 
   const handleAddTask = (e: React.SyntheticEvent) => {
@@ -17,8 +17,10 @@ const UserInput = ({ addTask }: props) => {
 
   return (
     <div className="user-input">
-      <input className="input field" type="text" placeholder="New task..." value={text} onChange={(e) => setText(e.target.value)} />
-      <input className="input sbmt-btn" type="submit" value="Add" disabled={text.length < 2} onClick={handleAddTask} />
+      <form onSubmit={handleAddTask}>
+        <input className="input field" autoFocus type="text" placeholder="New task..." value={text} onChange={(e) => setText(e.target.value)} />
+        <input className="input sbmt-btn" type="submit" value="Add" disabled={text.length < 2} />
+      </form>
     </div>
   );
 }
@@ -26,4 +28,4 @@ const UserInput = ({ addTask }: props) => {
 export default connect(
   null,
   { addTask }
-)(UserInput)
+)(AddTodo)

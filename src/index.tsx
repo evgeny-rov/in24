@@ -7,10 +7,14 @@ import { createStore } from 'redux';
 
 const initialState = {
   tasks: {
-    0: { id: 0, text: 'this is your first task', isComplete: false },
-    1: { id: 1, text: 'this is your second task', isComplete: false },
-    2: { id: 2, text: 'this is your third complete task', isComplete: true },
+    0: { id: 0, text: 'Dont make a to-do app just like everyone else', isComplete: true },
+    1: { id: 1, text: 'Be an lazy ass', isComplete: false },
+    2: { id: 2, text: 'Eat a lot of sweets', isComplete: false },
   },
+  progress: {
+    total: 3,
+    completeTasks: 1,
+  }
 };
 
 const rootReducer = (state: any = initialState, action: any) => {
@@ -22,6 +26,10 @@ const rootReducer = (state: any = initialState, action: any) => {
         tasks: {
           ...state.tasks,
           [addId]: { id: addId, text, isComplete: false },
+        },
+        progress: {
+          ...state.progress,
+          total: state.progress.total += 1,
         }
       };
     case 'TOGGLE_TASK':
@@ -34,6 +42,10 @@ const rootReducer = (state: any = initialState, action: any) => {
             ...state.tasks[toggleId],
             isComplete: !state.tasks[toggleId].isComplete,
           }
+        },
+        progress: {
+          ...state.progress,
+          completeTasks: state.tasks[toggleId].isComplete ? state.progress.completeTasks -= 1 : state.progress.completeTasks += 1,
         }
       };
     default: 
