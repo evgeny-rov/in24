@@ -1,19 +1,10 @@
 import React, { useRef, useEffect } from 'react';
 import { connect } from 'react-redux';
 import Task from './Task';
-
-interface task {
-  id: number,
-  text: string,
-  isComplete: boolean,
-}
-
-interface State {
-  tasks: object,
-}
+import { Todo } from '../index';
 
 interface props {
-  tasks: Array<task>,
+  tasks: Array<Todo.TaskInt>,
 }
 
 const TaskList = ({ tasks }: props) => {
@@ -32,8 +23,8 @@ const TaskList = ({ tasks }: props) => {
   );
 }
 
-const mapStateToProps = (state: State) => {
-  return { tasks: Object.values(state.tasks) };
+const mapStateToProps = (state: Todo.TaskStateInt) => {
+  return { tasks: Object.values(state.todo.tasks) };
 }
 
 export default connect(mapStateToProps)(TaskList);

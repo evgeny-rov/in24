@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { addTask } from '../actions/actions';
+import { addTask } from '../redux/actions/actions';
 
 interface props {
   addTask: (text: string) => {};

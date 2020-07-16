@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { toggleTask } from '../actions/actions';
+import { toggleTask } from '../redux/actions/actions';
 
 interface props {
   id: number,

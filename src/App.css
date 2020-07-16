@@ -160,13 +160,18 @@ li input {
   transition: all .7s;
 }
 
-.complete-notify {
+.completion-notify {
   position: absolute;
   box-sizing: border-box;
   padding: 1rem;
   width: 100%;
   text-align: center;
   transition: all .5s;
+  user-select: none;  
+}
+
+.completion-notify.complete {
+  color: var(--accent-color2);
 }
 
 @media (max-width: 35rem) {
