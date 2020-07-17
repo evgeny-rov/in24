@@ -1,3 +1,9 @@
+:root {
+  --main-color: grey;
+  --accent-color: #fff;
+  --accent-color2: rgb(231, 71, 106);
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -12,11 +18,11 @@ code {
     monospace;
 }
 
-
 .App {
+  position: absolute;
   width: 100%;
-  height: 100vh;
-  background-color: rgb(22, 22, 22);
+  height: 100%;
+  background: linear-gradient(-45deg, rgb(31, 31, 31) 0%, rgb(48, 48, 48) 100%);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -26,63 +32,151 @@ code {
 .task-container {
   box-sizing: border-box;
   padding: 1em;
-  width: 50%;
-  height: 50%;
-  background-color: rgb(36, 36, 36);
-  border-radius: 10px;
+  width: 30rem;
+  height: 30rem;
+  background: rgb(45, 45, 45);
+  border-radius: 0.5em;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
+  box-shadow: 0 0 20px 5px rgb(35, 35, 35);
+  overflow: hidden;
 }
 
-.task-container::after {
-  content: '';
+#task-list {
+  list-style: none;
   height: 70%;
-  width: 1px;
-  background-color: grey;
+  width: 80%;
+  text-align: left;
+  overflow-y: auto;
+  line-height: 2rem;
+}
+
+#task-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+#task-list::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.452);
+	border-radius: 10px;
+}
+
+#task-list::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+	background: grey;
+}
+
+#task-list li {
+  position: relative;
+  cursor: pointer;
+  transition: all .5s;
+  word-wrap: break-word;
+}
+
+li::first-letter {
+  text-transform: uppercase;
+}
+
+li input {
   position: absolute;
+  left: -2rem;
+  transform: translateY(50%);
+}
+
+#task-list li:hover {
+  font-size: 1.05rem;
+}
+
+#task-list li.complete {
+  text-decoration: line-through;
+  color: grey;
 }
 
 .user-input {
   position: absolute;
+  box-sizing: border-box;
   bottom: 0;
-  padding: 1em;
-}
-
-.task-list {
-  list-style: none;
-  height: 70%;
-  padding: 0;
-  margin: 1em;
-  text-align: left;
-  overflow: auto;
-}
-
-.task-list.complete {
-  text-decoration: line-through;
-}
-
-.tasks {
-  height: 70%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 100%;
+  height: 2rem;
+  opacity: 0.9;
 }
 
-.tasks-block {
-  position: relative;
-  height: 100%;
-  width: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 2px;
-}
-
-.tasks-block > span {
+.input {
+  box-sizing: border-box;
   position: absolute;
-  top: 5px;
-  border-bottom: 1px solid grey;
+  padding: 0.5rem;
+  border: none;
+  height: 100%;
+}
+
+.field {
+  left: 0;
+  bottom: 0;
+  width: 80%;
+  z-index: 4;
+}
+
+.sbmt-btn {
+  bottom: 0;
+  right: 0;
+  color: #fff;
+  width: 20%;
+  background: var(--accent-color2);
+  transition: all .4s;
+  z-index: 5;
+  box-shadow: 0 0 4px var(--accent-color2);
+}
+
+.sbmt-btn:disabled {
+  color: #AAA;
+  background: rgb(107, 74, 74);
+  box-shadow: inset 1px 0 3px rgb(36, 36, 36);
+}
+
+.completion-container {
+  position: absolute;
+  box-sizing: border-box;
+  top: 0;
+  width: 100%;
+  height: 2rem;
+}
+
+#progress-status {
+  position: absolute;
+  top: 0;
+  border: none;
+  width: 100%;
+  height: 0.3rem;
+  opacity: 0.9;
+}
+
+#progress-status::-webkit-progress-bar {
+  background: #FFF;
+}
+
+#progress-status::-webkit-progress-value {
+  background: var(--accent-color2);
+  transition: all .7s;
+}
+
+.completion-notify {
+  position: absolute;
+  box-sizing: border-box;
+  padding: 1rem;
+  width: 100%;
+  text-align: center;
+  transition: all .5s;
+  user-select: none;  
+}
+
+.completion-notify.complete {
+  color: var(--accent-color2);
+}
+
+@media (max-width: 35rem) {
+  .task-container {
+    height: 100%;
+    width: 100%;
+  }
 }
