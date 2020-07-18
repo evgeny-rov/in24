@@ -3,14 +3,12 @@ import AddTask from './AddTask';
 import TaskList from './TaskList';
 import CompletionStatus from './CompletionStatus';
 
-const TaskContainer = () => {
+export default () => {
 	return (
-		<div className="task-container">
+		<div className="todo-container">
       <CompletionStatus />
       <TaskList />
 			<AddTask />
 		</div>
 	);
 } 
-
-export default TaskContainer;

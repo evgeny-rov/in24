@@ -1,18 +1,16 @@
 import { ADD_TASK, TOGGLE_TASK } from './actionTypes';
 
-let nextTodoId = 2;
-
 export const addTask = (text: string) => ({
     type: ADD_TASK,
     payload: {
-      id: ++nextTodoId,
       text,
     }
 });
 
-export const toggleTask = (id: number) => ({
+export const toggleTask = (id: number, nextStatus: boolean) => ({
   type: TOGGLE_TASK,
   payload: {
-    id
+    id,
+    nextStatus
   }
 });

@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { addTask } from '../redux/actions/actions';
 
-interface props {
+interface Props {
   addTask: (text: string) => {};
 }
 
-const AddTask = ({ addTask }: props) => {
+const AddTask = ({ addTask }: Props) => {
   const [text, setText] = useState('');
 
   const handleAddTask = (e: React.SyntheticEvent) => {

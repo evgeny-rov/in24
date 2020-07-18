@@ -1,14 +1,13 @@
 import React, { useRef, useEffect } from 'react';
 import { connect } from 'react-redux';
-import Task from './Task';
-import { Todo } from '../types';
+import TaskItem from './TaskItem';
 
-interface props {
-  tasks: Array<Todo.TaskInt>,
+interface Props {
+  tasks: Array<Task>,
 }
 
-const TaskList = ({ tasks }: props) => {
-  const listRef: any = useRef();
+const TaskList = ({ tasks }: Props) => {
+  const listRef: any = useRef(null);
 
   useEffect(() => {
     listRef.current.scrollTop = listRef.current.scrollHeight;
@@ -17,14 +16,14 @@ const TaskList = ({ tasks }: props) => {
   return (
     <ul ref={listRef} id="task-list">
       {tasks.map(({ id, text, isComplete}) => {
-        return <Task key={id} id={id} text={text} isComplete={isComplete} />
+        return <TaskItem key={id} id={id} text={text} isComplete={isComplete} />
       })}
     </ul>
   );
 }
 
-const mapStateToProps = (state: Todo.TaskStateInt) => {
-  return { tasks: Object.values(state.todo.tasks) };
+const mapStateToProps = (state: AppState) => {
+  return { tasks: state.todo.allIds.map((id) => state.todo.tasks[id]) };
 }
 
 export default connect(mapStateToProps)(TaskList);

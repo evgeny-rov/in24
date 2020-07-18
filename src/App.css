@@ -29,7 +29,7 @@ code {
   color: white;
 }
 
-.task-container {
+.todo-container {
   box-sizing: border-box;
   padding: 1em;
   width: 30rem;

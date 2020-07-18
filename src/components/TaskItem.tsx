@@ -2,18 +2,15 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { toggleTask } from '../redux/actions/actions';
 
-interface props {
-  id: number,
-  text: string,
-  isComplete: boolean,
-  toggleTask: (id: number) => {},
+interface Props extends Task {
+  toggleTask: (id: number, nextStatus: boolean) => Action,
 }
 
-const Task = ({ id, text, isComplete, toggleTask }: props) => {
+const Task = ({ id, text, isComplete, toggleTask }: Props) => {
   const clsNames = isComplete ? 'complete': '';
 
 return (
-    <li className={clsNames} onClick={() => toggleTask(id)}>
+    <li className={clsNames} onClick={() => toggleTask(id, !isComplete)}>
       <input type="checkbox" name="complete" readOnly checked={isComplete}/>
       <span>{text}</span>
     </li>
