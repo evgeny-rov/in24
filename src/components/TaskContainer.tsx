@@ -1,14 +1,14 @@
 import React from 'react';
-import AddTodo from './AddTodo';
+import AddTask from './AddTask';
 import TaskList from './TaskList';
 import CompletionStatus from './CompletionStatus';
 
-const TaskContainer = (props: any) => {
+const TaskContainer = () => {
 	return (
 		<div className="task-container">
       <CompletionStatus />
       <TaskList />
-			<AddTodo />
+			<AddTask />
 		</div>
 	);
 } 

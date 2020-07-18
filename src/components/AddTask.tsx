@@ -6,7 +6,7 @@ interface props {
   addTask: (text: string) => {};
 }
 
-const AddTodo = ({ addTask }: props) => {
+const AddTask = ({ addTask }: props) => {
   const [text, setText] = useState('');
 
   const handleAddTask = (e: React.SyntheticEvent) => {
@@ -28,4 +28,4 @@ const AddTodo = ({ addTask }: props) => {
 export default connect(
   null,
   { addTask }
-)(AddTodo)
+)(AddTask)

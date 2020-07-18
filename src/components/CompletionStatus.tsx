@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Todo } from '../index';
+import { Todo } from '../types';
+import Countdown from './Countdown';
 
 interface Props {
   progress: {
@@ -18,6 +19,7 @@ const CompletionStatus = ({ progress: { completeTasks, total } }: Props) => {
     <div className="completion-container">
       <progress id="progress-status" value={completeTasks} max={total}></progress>
       <div className={`completion-notify${completeClassName}`}>{notifyContent}</div>
+      <Countdown countAmount={86400000 - 1000}/>
     </div>
   );
 }

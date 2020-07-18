@@ -1,5 +1,5 @@
 import { ADD_TASK, TOGGLE_TASK } from '../actions/actionTypes';
-import { Todo } from '../../index';
+import { Todo } from '../../types';
 
 const initialState = {
   tasks: {

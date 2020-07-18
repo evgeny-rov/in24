@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import { connect } from 'react-redux';
 import Task from './Task';
-import { Todo } from '../index';
+import { Todo } from '../types';
 
 interface props {
   tasks: Array<Todo.TaskInt>,
