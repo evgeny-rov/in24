@@ -1,7 +1,7 @@
-import { uniqueId, includes } from 'lodash';
+import includes from 'lodash/includes';
 
 const getUniqueId = (coll?: number[]): number => {
-  const generatedId: number = Number(uniqueId());
+  const generatedId: number = Math.floor(Math.random() * 1000);
   if (!coll) {
     return generatedId;
   } else if (!includes(coll, generatedId)) {

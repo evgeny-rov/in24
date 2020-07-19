@@ -1,4 +1,4 @@
-import { ADD_TASK, TOGGLE_TASK } from '../actions/actionTypes';
+import { ADD_TASK, TOGGLE_TASK, RESET_APP } from '../actions/actionTypes';
 import getUniqueId from '../../utils/getUniqueId';
 
 const initialState: TodoState = {
@@ -35,6 +35,9 @@ export default (state: TodoState = initialState, action: Action) => {
           }
         },
       };
+    case RESET_APP:
+      console.log('reset')
+      return initialState;
     default: 
       return state;
   }

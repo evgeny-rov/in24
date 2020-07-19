@@ -1,4 +1,4 @@
-import { ADD_TASK, TOGGLE_TASK } from './actionTypes';
+import { ADD_TASK, TOGGLE_TASK, RESET_APP } from './actionTypes';
 
 export const addTask = (text: string) => ({
     type: ADD_TASK,
@@ -13,4 +13,8 @@ export const toggleTask = (id: number, nextStatus: boolean) => ({
     id,
     nextStatus
   }
+});
+
+export const resetApp = () => ({
+  type: RESET_APP,
 });

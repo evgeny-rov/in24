@@ -18,6 +18,8 @@ code {
     monospace;
 }
 
+/* app general styling */
+
 .App {
   position: absolute;
   width: 100%;
@@ -28,6 +30,57 @@ code {
   align-items: center;
   color: white;
 }
+
+/* status block styling */
+
+.completion-container {
+  position: absolute;
+  box-sizing: border-box;
+  top: 0;
+  width: 100%;
+  opacity: 0.9;
+}
+
+#progress-status {
+  position: absolute;
+  top: 0;
+  border: none;
+  width: 100%;
+  height: 0.3rem;
+}
+
+#progress-status::-webkit-progress-bar {
+  background: #FFF;
+}
+
+#progress-status::-webkit-progress-value {
+  background: var(--accent-color2);
+  transition: all .7s;
+}
+
+.completion-notify {
+  position: absolute;
+  box-sizing: border-box;
+  padding: 1.5rem;
+  width: 100%;
+  text-align: center;
+  transition: all .5s;
+  user-select: none;  
+}
+
+.completion-notify.complete {
+  color: var(--accent-color2);
+}
+
+.progress {
+  float: right;
+}
+
+.timer {
+  float: left;
+}
+
+/* todo styling */
 
 .todo-container {
   box-sizing: border-box;
@@ -93,89 +146,56 @@ li input {
   color: grey;
 }
 
-.user-input {
+/* menu section styling */
+
+.menu-container {
   position: absolute;
   box-sizing: border-box;
-  bottom: 0;
   width: 100%;
-  height: 2rem;
+  height: 4rem;
+  bottom: 0;
   opacity: 0.9;
+}
+
+.user-input {
+  width: 100%;
+  height: 50%;
+}
+
+.menu-item {
+  width: 100%;
+  height: 50%;
+  box-sizing: border-box;
 }
 
 .input {
   box-sizing: border-box;
-  position: absolute;
   padding: 0.5rem;
   border: none;
-  height: 100%;
 }
 
 .field {
-  left: 0;
-  bottom: 0;
   width: 80%;
   z-index: 4;
 }
 
 .sbmt-btn {
-  bottom: 0;
-  right: 0;
-  color: #fff;
   width: 20%;
   background: var(--accent-color2);
-  transition: all .4s;
+  color: #fff;
   z-index: 5;
   box-shadow: 0 0 4px var(--accent-color2);
+  transition: all .6s;
 }
 
 .sbmt-btn:disabled {
-  color: #AAA;
   background: rgb(107, 74, 74);
+  color: #AAA;
   box-shadow: inset 1px 0 3px rgb(36, 36, 36);
 }
 
-.completion-container {
-  position: absolute;
-  box-sizing: border-box;
-  top: 0;
-  width: 100%;
-  height: 2rem;
-}
-
-#progress-status {
-  position: absolute;
-  top: 0;
-  border: none;
-  width: 100%;
-  height: 0.3rem;
-  opacity: 0.9;
-}
-
-#progress-status::-webkit-progress-bar {
-  background: #FFF;
-}
-
-#progress-status::-webkit-progress-value {
-  background: var(--accent-color2);
-  transition: all .7s;
-}
-
-.completion-notify {
-  position: absolute;
-  box-sizing: border-box;
-  padding: 1rem;
-  width: 100%;
-  text-align: center;
-  transition: all .5s;
-  user-select: none;  
-}
-
-.completion-notify.complete {
-  color: var(--accent-color2);
-}
-
 @media (max-width: 35rem) {
-  .task-container {
+  .todo-container {
     height: 100%;
     width: 100%;
   }

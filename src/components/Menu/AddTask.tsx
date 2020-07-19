@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { addTask } from '../redux/actions/actions';
+import { addTask } from '../../redux/actions';
 
 interface Props {
   addTask: (text: string) => {};
@@ -16,7 +16,7 @@ const AddTask = ({ addTask }: Props) => {
   };
 
   return (
-    <div className="user-input">
+    <div className="user-input menu-item">
       <form onSubmit={handleAddTask}>
         <input className="input field" autoFocus type="text" placeholder="New task..." value={text} onChange={(e) => setText(e.target.value)} />
         <input className="input sbmt-btn" type="submit" value="Add" disabled={text.length < 2} />

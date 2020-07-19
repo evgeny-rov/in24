@@ -1,4 +1,4 @@
-import { ADD_TASK, TOGGLE_TASK } from '../actions/actionTypes';
+import { ADD_TASK, TOGGLE_TASK, RESET_APP } from '../actions/actionTypes';
 
 const DAY_IN_MS = 86399000;
 
@@ -20,6 +20,11 @@ export default (state: ProgressState = initialState, action: Action) => {
       return {
         ...state,
         complete: nextStatus ? state.complete + 1 : state.complete - 1,
+      };
+    case RESET_APP:
+      return {
+        ...initialState,
+        expires: Date.now() + DAY_IN_MS,
       };
     default:
       return state;
