@@ -1,7 +1,14 @@
 import React from 'react';
+import { ReactComponent as Info } from '../../info.svg';
+import ResetWithConfirmation from './ResetWithConfirmation';
 
-export default () => {
+const Nav = () => {
   return (
-    <div className="menu-nav menu-item">hello i'm nav</div>
+    <div className="menu-nav menu-item">
+      <Info />
+      <ResetWithConfirmation />
+    </div>
   );
 }
+
+export default Nav;

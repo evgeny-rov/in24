@@ -2,6 +2,7 @@
   --main-color: grey;
   --accent-color: #fff;
   --accent-color2: rgb(231, 71, 106);
+  --inactive-color: rgb(107, 74, 74);
 }
 
 body {
@@ -83,16 +84,16 @@ code {
 /* todo styling */
 
 .todo-container {
+  position: relative;
   box-sizing: border-box;
-  padding: 1em;
   width: 30rem;
-  height: 30rem;
+  height: 40rem;
+  padding: 1em;
   background: rgb(45, 45, 45);
   border-radius: 0.5em;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
   box-shadow: 0 0 20px 5px rgb(35, 35, 35);
   overflow: hidden;
 }
@@ -152,26 +153,91 @@ li input {
   position: absolute;
   box-sizing: border-box;
   width: 100%;
-  height: 4rem;
+  height: 5rem;
   bottom: 0;
   opacity: 0.9;
 }
 
-.user-input {
-  width: 100%;
-  height: 50%;
-}
-
 .menu-item {
   width: 100%;
-  height: 50%;
   box-sizing: border-box;
+}
+
+/* nav */
+
+.menu-nav {
+  box-sizing: border-box;
+  padding: 0.6rem 0.8rem;
+  height: 60%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-confirm {
+  height: 100%;
+  float: right;
+}
+
+.nav-btn {
+  height: 100%;
+  width: 2.5rem;
+  margin-left: 0.8rem;
+  border: none;
+  background: var(--inactive-color);
+  color: #fff;
+  border-radius: 3px;
+  transition: all .5s;
+}
+
+.nav-btn:hover {
+  background: var(--accent-color2);
+}
+
+.user-input {
+  height: 40%;
+}
+
+svg {
+  width: 20px;
+}
+
+.trash-can-svg {
+  float: right;
+  fill: rgb(139, 139, 139);
+}
+
+.trash-can-svg:hover {
+  fill: #fff;
+  transition: all .4s;
+}
+
+.info-svg {
+  transition: all .4s;
+}
+
+.info-svg path {
+  transition: all .4s;
+  fill: rgb(139, 139, 139);
+}
+
+.info-svg:hover {
+  transform: rotate(90deg);
+}
+
+.info-svg:hover path {
+  fill: #fff;
+}
+
+.user-input form {
+  height: 100%;
 }
 
 .input {
   box-sizing: border-box;
   padding: 0.5rem;
   border: none;
+  height: 100%;
 }
 
 .field {
@@ -189,7 +255,7 @@ li input {
 }
 
 .sbmt-btn:disabled {
-  background: rgb(107, 74, 74);
+  background: var(--inactive-color);
   color: #AAA;
   box-shadow: inset 1px 0 3px rgb(36, 36, 36);
 }
@@ -198,5 +264,6 @@ li input {
   .todo-container {
     height: 100%;
     width: 100%;
+    border-radius: 0;
   }
 }

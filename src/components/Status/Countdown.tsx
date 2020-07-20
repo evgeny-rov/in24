@@ -11,15 +11,16 @@ const CountDown = ({ countAmount, resetApp }: Props) => {
   const [time, setTime] = useState(countAmount);
   
   useEffect(() => {
-    const timerId = setInterval(() => setTime(time - 1000), 1000);
-    return () => clearInterval(timerId);
-  }, [time]);
+    if (time < 1000) {
+      resetApp()
+    } else {
+      const intervalId = setInterval(() => setTime(time - 1000), 1000);
+      return () => clearInterval(intervalId);
+    }
+  }, [time, resetApp]);
 
   return (
-    <>
-      <span className="timer">{new Date(time).toUTCString().slice(-12, -4)}</span>
-      <input type="button" value="xxx" onClick={resetApp}/>
-    </>
+    <span className="timer">{new Date(time).toUTCString().slice(-12, -4)}</span>
   );
 }
 

@@ -1,6 +1,6 @@
 import { ADD_TASK, TOGGLE_TASK, RESET_APP } from '../actions/actionTypes';
 
-const DAY_IN_MS = 86399000;
+const DAY_IN_MS = 864000000;
 
 const initialState: ProgressState = {
   total: 3,
