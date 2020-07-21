@@ -21,15 +21,48 @@ code {
 
 /* app general styling */
 
-.App {
+.fs {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: linear-gradient(-45deg, rgb(31, 31, 31) 0%, rgb(48, 48, 48) 100%);
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.App {
+  background: linear-gradient(-45deg, rgb(31, 31, 31) 0%, rgb(48, 48, 48) 100%);
   color: white;
+  z-index: 1;
+}
+
+.overlay {
+  background: rgba(0, 0, 0, 0.938);
+  flex-direction: column;
+  z-index: 1000;
+  color: #fff;
+}
+
+/* modal */
+
+.modal-text {
+  font-size: 1.3rem;
+  margin: 1rem;
+}
+
+.btn-modal {
+  height: 2.5rem;
+  width: 6rem;
+  margin: 0.5rem;
+  border: none;
+  background: var(--inactive-color);
+  color: #fff;
+  border-radius: 3px;
+  transition: all .5s;
+}
+
+.btn-modal:hover {
+  background: var(--accent-color2);
 }
 
 /* status block styling */
@@ -174,24 +207,27 @@ li input {
   align-items: center;
 }
 
-.nav-confirm {
+.nav-item {
   height: 100%;
-  float: right;
 }
 
-.nav-btn {
-  height: 100%;
-  width: 2.5rem;
-  margin-left: 0.8rem;
-  border: none;
-  background: var(--inactive-color);
+.nav-info {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.info-popup {
+  position: relative;
+  background: rgba(0, 0, 0, 0.301);
   color: #fff;
-  border-radius: 3px;
-  transition: all .5s;
+  bottom: 180%;
+  padding: 1rem;
+  border-radius: 8px 8px 8px 0;
 }
 
-.nav-btn:hover {
-  background: var(--accent-color2);
+.info-popup span {
+  display: block;
 }
 
 .user-input {
@@ -222,7 +258,7 @@ svg {
 }
 
 .info-svg:hover {
-  transform: rotate(90deg);
+  transform: rotate(45deg);
 }
 
 .info-svg:hover path {

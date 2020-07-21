@@ -2,9 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Countdown from './Countdown';
 
+// `${Math.floor((complete / total) * 100)}%`
+
 const CompletionStatus = ({ total, complete, expires }: ProgressState) => {
   const isToDoComplete = total === complete;
-  const notifyContent = isToDoComplete ? '✓' : `${Math.floor((complete / total) * 100)}%`;
+  const notifyContent = isToDoComplete ? 'Good job! Take a break or add new tasks' : `${complete} / ${total}`;
   const completeClassName = isToDoComplete ? 'completion-notify complete' : 'completion-notify';
   
   return (

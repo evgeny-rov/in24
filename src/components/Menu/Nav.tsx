@@ -1,12 +1,12 @@
 import React from 'react';
-import { ReactComponent as Info } from '../../info.svg';
-import ResetWithConfirmation from './ResetWithConfirmation';
+import Info from './Info';
+import Restore from './Restore';
 
 const Nav = () => {
   return (
     <div className="menu-nav menu-item">
       <Info />
-      <ResetWithConfirmation />
+      <Restore />
     </div>
   );
 }

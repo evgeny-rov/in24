@@ -6,7 +6,7 @@ import TaskList from './components/Todo/TaskList';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App fs">
       <div className="todo-container">
         <Status />
         <TaskList />
