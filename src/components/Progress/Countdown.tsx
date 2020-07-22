@@ -20,7 +20,7 @@ const CountDown = ({ countAmount, resetApp }: Props) => {
   }, [time, resetApp]);
 
   return (
-    <span className="timer">{new Date(time).toUTCString().slice(-12, -4)}</span>
+    <span className="countdown">{new Date(time).toUTCString().slice(-12, -4)}</span>
   );
 }
 

@@ -5,8 +5,8 @@ import Restore from './Restore';
 const Nav = () => {
   return (
     <div className="menu-nav menu-item">
-      <Info />
       <Restore />
+      <Info />
     </div>
   );
 }

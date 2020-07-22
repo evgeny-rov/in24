@@ -7,21 +7,14 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Ubuntu Mono', monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
 /* app general styling */
 
-.fs {
+.App, .modal-overlay {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -36,11 +29,28 @@ code {
   z-index: 1;
 }
 
-.overlay {
+.modal-overlay {
   background: rgba(0, 0, 0, 0.938);
   flex-direction: column;
   z-index: 1000;
   color: #fff;
+}
+
+/* svg */
+
+svg, svg path {
+  fill: rgb(143, 143, 143);
+  width: 20px;
+  height: 20px;
+  transition: all 1s;
+}
+
+svg:hover path {
+  fill: var(--accent-color2);
+}
+
+svg:hover {
+  transform: rotate(-360deg);
 }
 
 /* modal */
@@ -67,15 +77,16 @@ code {
 
 /* status block styling */
 
-.completion-container {
+.progress-container {
   position: absolute;
   box-sizing: border-box;
   top: 0;
   width: 100%;
   opacity: 0.9;
+  z-index: 2;
 }
 
-#progress-status {
+#progress-status-bar {
   position: absolute;
   top: 0;
   border: none;
@@ -83,52 +94,62 @@ code {
   height: 0.3rem;
 }
 
-#progress-status::-webkit-progress-bar {
+#progress-status-bar::-webkit-progress-bar {
   background: #FFF;
 }
 
-#progress-status::-webkit-progress-value {
+#progress-status-bar::-webkit-progress-value {
   background: var(--accent-color2);
   transition: all .7s;
 }
 
-.completion-notify {
+.progress-context {
   position: absolute;
   box-sizing: border-box;
   padding: 1.5rem;
   width: 100%;
-  text-align: center;
+  user-select: none;
   transition: all .5s;
-  user-select: none;  
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.completion-notify.complete {
+.progress-context-count {
+  font-size: 0.9rem;
+  margin-left: 1rem;
+  text-align: end;
+}
+
+.progress-context.complete {
   color: var(--accent-color2);
-}
-
-.progress {
-  float: right;
-}
-
-.timer {
-  float: left;
 }
 
 /* todo styling */
 
 .todo-container {
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   box-sizing: border-box;
   width: 30rem;
   height: 40rem;
   padding: 1em;
   background: rgb(45, 45, 45);
   border-radius: 0.5em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   box-shadow: 0 0 20px 5px rgb(35, 35, 35);
   overflow: hidden;
+}
+
+.background-logo {
+  position: absolute;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 20rem;
+  bottom: -8rem;
+  color: #000;
+  opacity: 0.04;
+  z-index: 1;
 }
 
 #task-list {
@@ -138,6 +159,7 @@ code {
   text-align: left;
   overflow-y: auto;
   line-height: 2rem;
+  z-index: 2;
 }
 
 #task-list::-webkit-scrollbar {
@@ -189,6 +211,7 @@ li input {
   height: 5rem;
   bottom: 0;
   opacity: 0.9;
+  z-index: 2;
 }
 
 .menu-item {
@@ -221,9 +244,9 @@ li input {
   position: relative;
   background: rgba(0, 0, 0, 0.301);
   color: #fff;
-  bottom: 180%;
+  bottom: 170%;
   padding: 1rem;
-  border-radius: 8px 8px 8px 0;
+  border-radius: 8px 8px 0;
 }
 
 .info-popup span {
@@ -232,41 +255,12 @@ li input {
 
 .user-input {
   height: 40%;
-}
-
-svg {
-  width: 20px;
-}
-
-.trash-can-svg {
-  float: right;
-  fill: rgb(139, 139, 139);
-}
-
-.trash-can-svg:hover {
-  fill: #fff;
-  transition: all .4s;
-}
-
-.info-svg {
-  transition: all .4s;
-}
-
-.info-svg path {
-  transition: all .4s;
-  fill: rgb(139, 139, 139);
-}
-
-.info-svg:hover {
-  transform: rotate(45deg);
-}
-
-.info-svg:hover path {
-  fill: #fff;
+  width: 100%;
 }
 
 .user-input form {
   height: 100%;
+  width: 100%;
 }
 
 .input {

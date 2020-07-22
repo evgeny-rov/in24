@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { resetApp } from '../../redux/actions';
-import { ReactComponent as TrashSVG } from '../../trash-can.svg';
+import { ReactComponent as TrashSVG } from '../../assets/trash-can.svg';
 import Modal from '../Modal';
 
 interface Props {

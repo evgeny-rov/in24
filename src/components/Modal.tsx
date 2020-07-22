@@ -9,7 +9,7 @@ interface Props {
 
 const Modal: FunctionComponent<Props> = ({ children, onAbort }) => {
   const modalContent = (
-    <div className="overlay fs" onClick={onAbort}>
+    <div className="modal-overlay" onClick={onAbort}>
       {children}
     </div>
   );

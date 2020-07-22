@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { ReactComponent as InfoSVG } from '../../info.svg';
+import { ReactComponent as InfoSVG } from '../../assets/info.svg';
 
 // use css to show popup?
 // would save a sheite load of unnecessary js
 
 export default () => {
-  const [showPopup, setShowPopup] = useState(false);
+  const [showPopup, setShowPopup] = useState(true);
 
   const renderPopup = () => {
     return (
@@ -18,11 +18,11 @@ export default () => {
 
   return (
     <div className="nav-info nav-item">
+      {showPopup && renderPopup()}
       <InfoSVG 
         onMouseOver={() => setShowPopup(true)} 
         onMouseLeave={() => setShowPopup(false)}
       />
-      {showPopup && renderPopup()}
     </div>
   );
 }
