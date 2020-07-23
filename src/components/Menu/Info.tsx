@@ -5,7 +5,7 @@ import { ReactComponent as InfoSVG } from '../../assets/info.svg';
 // would save a sheite load of unnecessary js
 
 export default () => {
-  const [showPopup, setShowPopup] = useState(true);
+  const [showPopup, setShowPopup] = useState(false);
 
   const renderPopup = () => {
     return (

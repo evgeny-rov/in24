@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import { connect } from 'react-redux';
 import Countdown from './Countdown';
+import { progressSelector } from '../../selectors';
 
-const Progress = ({ total, complete, expires }: ProgressState) => {
+interface Props {
+  total: number;
+  complete: number;
+  expires: number;
+}
+
+const Progress: FunctionComponent<Props> = ({ total, complete, expires }) => {
+  console.log(expires)
   const isToDoComplete = total === complete;
   const completeClassName = isToDoComplete ? 'progress-context complete' : 'progress-context';
   const completeText = isToDoComplete ? 'Good job! Take a break or add new tasks' : `${complete}/${total}`;
@@ -18,8 +26,6 @@ const Progress = ({ total, complete, expires }: ProgressState) => {
   );
 }
 
-const mapStateToProps = (state: AppState) => {
-  return { ...state.progress };
-}
+const mapStateToProps = (state: AppState) => progressSelector(state);
 
 export default connect(mapStateToProps)(Progress);

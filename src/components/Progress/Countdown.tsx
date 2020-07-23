@@ -1,21 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, FunctionComponent } from 'react';
 import { connect } from 'react-redux';
 import { resetApp } from '../../redux/actions';
 
 interface Props {
   countAmount: number;
-  resetApp: () => {};
+  resetApp: () => Action;
 }
 
-const CountDown = ({ countAmount, resetApp }: Props) => {
+const CountDown: FunctionComponent<Props> = ({ countAmount, resetApp }) => {
   const [time, setTime] = useState(countAmount);
   
   useEffect(() => {
     if (time < 1000) {
       resetApp()
     } else {
-      const intervalId = setInterval(() => setTime(time - 1000), 1000);
-      return () => clearInterval(intervalId);
+      const timerId = setTimeout(() => setTime(time - 1000), 995);
+      return () => clearTimeout(timerId);
     }
   }, [time, resetApp]);
 

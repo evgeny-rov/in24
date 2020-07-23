@@ -1,12 +1,13 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, FunctionComponent } from 'react';
 import { connect } from 'react-redux';
 import TaskItem from './TaskItem';
+import { tasksSelector } from '../../selectors';
 
 interface Props {
   tasks: Array<Task>,
 }
 
-const TaskList = ({ tasks }: Props) => {
+const TaskList: FunctionComponent<Props> = ({ tasks }) => {
   const listRef: any = useRef(null);
 
   useEffect(() => {
@@ -23,7 +24,7 @@ const TaskList = ({ tasks }: Props) => {
 }
 
 const mapStateToProps = (state: AppState) => {
-  return { tasks: state.todo.allIds.map((id) => state.todo.tasks[id]) };
+  return { tasks: tasksSelector(state) };
 }
 
 export default connect(mapStateToProps)(TaskList);

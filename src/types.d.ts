@@ -1,6 +1,6 @@
 declare interface Action {
   type: string;
-  payload: any;
+  payload?: any;
 }
 
 declare interface Task {
@@ -9,21 +9,10 @@ declare interface Task {
   isComplete: boolean;
 }
 
-declare interface ProgressState {
-  total: number;
-  complete: number;
-  expires: number;
-}
-
-declare interface TodoState {
-  tasks: {
+declare interface AppState {
+  allIds: number[];
+  tasksById: {
     [id: number]: Task;
   };
-  allIds: number[];
+  expires: number;
 }
-
-declare interface AppState {
-  todo: TodoState;
-  progress: ProgressState;
-}
-

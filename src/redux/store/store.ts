@@ -1,5 +1,5 @@
 import { createStore } from 'redux';
-import combinedReducers from '../reducers/index';
+import rootReducer from '../reducers/index';
 import throttle from 'lodash/throttle';
 
 const resetState = () => {
@@ -16,7 +16,7 @@ const loadState = () => {
   try {
     const serializedState = localStorage.getItem('state');
     if (serializedState === null) {
-      return undefined
+      return undefined;
     }
       
     const parsedState = JSON.parse(serializedState);
@@ -37,8 +37,7 @@ const saveState = (state: AppState) => {
 };
 
 const persistedState = loadState();
-
-const store = createStore(combinedReducers, persistedState);
+const store = createStore(rootReducer, persistedState);
 
 store.subscribe(throttle(() => {
   saveState(store.getState());

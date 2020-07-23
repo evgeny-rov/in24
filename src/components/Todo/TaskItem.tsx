@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import { connect } from 'react-redux';
 import { toggleTask } from '../../redux/actions';
 
@@ -6,7 +6,7 @@ interface Props extends Task {
   toggleTask: (id: number, nextStatus: boolean) => Action,
 }
 
-const Task = ({ id, text, isComplete, toggleTask }: Props) => {
+const Task: FunctionComponent<Props> = ({ id, text, isComplete, toggleTask }) => {
   const clsNames = isComplete ? 'complete': '';
 
 return (

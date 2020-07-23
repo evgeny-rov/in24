@@ -1,20 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, FunctionComponent } from 'react';
 import { connect } from 'react-redux';
 import { resetApp } from '../../redux/actions';
 import { ReactComponent as TrashSVG } from '../../assets/trash-can.svg';
 import Modal from '../Modal';
 
 interface Props {
-  resetApp: () => void;
+  resetApp: () => Action;
 }
 
-const Restore = ({ resetApp }: Props) => {
+const Restore: FunctionComponent<Props> = ({ resetApp }) => {
   const [showConfirm, setShowConfirm] = useState(false);
 
   const handleConfirmation = () => {
     setShowConfirm(false);
     resetApp();
-  }
+  };
 
   if (showConfirm) {
     return (
