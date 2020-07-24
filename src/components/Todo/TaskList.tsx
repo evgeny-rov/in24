@@ -17,7 +17,7 @@ const TaskList: FunctionComponent<Props> = ({ tasks }) => {
   return (
     <ul ref={listRef} id="task-list">
       {tasks.map(({ id, text, isComplete}) => {
-        return <TaskItem key={id} id={id} text={text} isComplete={isComplete} />
+        return (<TaskItem key={id} id={id} text={text} isComplete={isComplete} />);
       })}
     </ul>
   );

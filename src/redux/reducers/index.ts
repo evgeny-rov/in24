@@ -1,5 +1,6 @@
-import { ADD_TASK, TOGGLE_TASK, RESET_APP } from '../actions/actionTypes';
+import { ADD_TASK, TOGGLE_TASK, RESET_APP, REMOVE_TASK } from '../actions/actionTypes';
 import getUniqueId from '../../utils/getUniqueId';
+import { omit, filter } from 'lodash';
 
 const ONE_DAY_IN_MS = 86400000;
 
@@ -34,12 +35,19 @@ export default (state: AppState = initialState, action: Action) => {
           [toggleId]: {...state.tasksById[toggleId], isComplete: nextStatus },
         },
       };
+    case REMOVE_TASK: 
+      const { id: removeId } = action.payload;
+      return {
+        ...state,
+        allIds: filter(state.allIds, (id) => id !== removeId),
+        tasksById: omit(state.tasksById, [removeId]),
+      };
     case RESET_APP:
       localStorage.removeItem('state');
       return {
         ...initialState,
         expires: Date.now() + ONE_DAY_IN_MS,
-      }
+      };
     default: 
       return state;
   }

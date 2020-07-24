@@ -12,6 +12,8 @@ export default () => {
       <div className="info-popup">
         <span>Your tasks will be reset in 24 hours</span>
         <span>Try to complete all of them in time!</span>
+        <hr />
+        <span>Click twice on the checkbox to remove task</span>
       </div>
     );
   }

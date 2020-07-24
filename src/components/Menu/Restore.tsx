@@ -16,7 +16,7 @@ const Restore: FunctionComponent<Props> = ({ resetApp }) => {
     resetApp();
   };
 
-  if (showConfirm) {
+  const renderModal = () => {
     return (
       <Modal onAbort={() => setShowConfirm(false)}>
         <span className="modal-text">Reset all of your progress?</span>
@@ -26,9 +26,14 @@ const Restore: FunctionComponent<Props> = ({ resetApp }) => {
         </div>
       </Modal>
     );
-  } else {
-    return <TrashSVG onClick={() => setShowConfirm(true)} />
-  }
+  };
+  
+  return (
+    <>
+      {showConfirm && renderModal()}
+      <TrashSVG onClick={() => setShowConfirm(true)} />
+    </>
+  );
 }
 
 export default connect(null, { resetApp })(Restore);

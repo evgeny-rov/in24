@@ -20,7 +20,7 @@ const loadState = () => {
     }
       
     const parsedState = JSON.parse(serializedState);
-    const isStateExpired = checkDateForExpiration(parsedState.progress.expires);
+    const isStateExpired = checkDateForExpiration(parsedState.expires);
     return isStateExpired ? undefined : parsedState;
   } catch (err) {
     return undefined;
