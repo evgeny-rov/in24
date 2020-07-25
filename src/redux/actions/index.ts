@@ -1,4 +1,4 @@
-import { ADD_TASK, TOGGLE_TASK, RESET_APP, REMOVE_TASK } from './actionTypes';
+import { ADD_TASK, TOGGLE_TASK, RESET_APP, REMOVE_TASK, ERASE_COMPLETE_TASKS } from './actionTypes';
 
 export const addTask = (text: string) => ({
     type: ADD_TASK,
@@ -24,4 +24,8 @@ export const removeTask = (id: number) => ({
   payload: {
     id,
   },
+});
+
+export const eraseCompleteTasks = () => ({
+  type: ERASE_COMPLETE_TASKS,
 })

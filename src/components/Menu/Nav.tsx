@@ -1,11 +1,15 @@
 import React from 'react';
 import Info from './Info';
-import Restore from './Restore';
+import Reset from './Reset';
+import Erase from './Erase';
 
 const Nav = () => {
   return (
     <div className="menu-nav menu-item">
-      <Restore />
+      <div className="action-btns-wrapper">
+        <Reset />
+        <Erase />
+      </div>
       <Info />
     </div>
   );

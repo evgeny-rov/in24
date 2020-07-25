@@ -1,6 +1,7 @@
-import { ADD_TASK, TOGGLE_TASK, RESET_APP, REMOVE_TASK } from '../actions/actionTypes';
+import { ADD_TASK, TOGGLE_TASK, RESET_APP, REMOVE_TASK, ERASE_COMPLETE_TASKS } from '../actions/actionTypes';
 import getUniqueId from '../../utils/getUniqueId';
 import { omit, filter } from 'lodash';
+import { incompleteIdsSelector, incompleteTasksSelector } from '../../selectors'
 
 const ONE_DAY_IN_MS = 86400000;
 
@@ -41,6 +42,12 @@ export default (state: AppState = initialState, action: Action) => {
         ...state,
         allIds: filter(state.allIds, (id) => id !== removeId),
         tasksById: omit(state.tasksById, [removeId]),
+      };
+    case ERASE_COMPLETE_TASKS:
+      return {
+        ...state,
+        allIds: incompleteIdsSelector(state),
+        tasksById: incompleteTasksSelector(state),
       };
     case RESET_APP:
       localStorage.removeItem('state');

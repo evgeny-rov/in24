@@ -40,9 +40,8 @@ body {
 
 svg, svg path {
   fill: rgb(143, 143, 143);
-  width: 20px;
-  height: 20px;
   transition: all 1s;
+  padding: 0.7rem;
 }
 
 svg:hover path {
@@ -234,7 +233,9 @@ li::first-letter {
 
 .menu-nav {
   box-sizing: border-box;
+  /*
   padding: 0.6rem 0.8rem;
+  */
   height: 60%;
   display: flex;
   justify-content: space-between;
@@ -245,17 +246,20 @@ li::first-letter {
   height: 100%;
 }
 
+.action-btns-wrapper svg {
+}
+
 .nav-info {
   display: flex;
   align-items: center;
-  position: relative;
 }
 
 .info-popup {
-  position: relative;
+  position: absolute;
   background: rgba(0, 0, 0, 0.301);
   color: #fff;
-  bottom: 200%;
+  bottom: 100%;
+  right: 2rem;
   padding: 0.8rem;
   border-radius: 8px 8px 0;
   text-align: center;
