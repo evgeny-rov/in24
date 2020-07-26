@@ -9,29 +9,28 @@ interface Props {
 }
 
 const Restore: FunctionComponent<Props> = ({ resetApp }) => {
-  const [showConfirm, setShowConfirm] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const handleConfirmation = () => {
-    setShowConfirm(false);
+    setShowModal(false);
     resetApp();
   };
 
   const renderModal = () => {
     return (
-      <Modal onAbort={() => setShowConfirm(false)}>
-        <span className="modal-text">Reset all of your progress?</span>
-        <div className="modal-user-input">
-          <input type="button" className="btn-modal" value="Yes" onClick={handleConfirmation}/>
-          <input type="button" className="btn-modal" value="No" onClick={() => setShowConfirm(false)} />
-        </div>
-      </Modal>
+      <Modal 
+        message={'Reset all of your progress?'}
+        onAccept={handleConfirmation}
+        onRefuse={() => setShowModal(false)}
+        onClickOutside={() => setShowModal(false)}
+      />
     );
   };
   
   return (
     <>
-      {showConfirm && renderModal()}
-      <TrashSVG onClick={() => setShowConfirm(true)} />
+      {showModal && renderModal()}
+      <TrashSVG onClick={() => setShowModal(true)} />
     </>
   );
 }

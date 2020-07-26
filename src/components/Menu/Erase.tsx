@@ -9,9 +9,28 @@ interface Props {
 }
 
 const Erase: FunctionComponent<Props> = ({ eraseCompleteTasks }) => {
+  const [showModal, setShowModal] = useState(false);
+
+  const handleConfirmation = () => {
+    setShowModal(false);
+    eraseCompleteTasks();
+  };
+
+  const renderModal = () => {
+    return (
+      <Modal 
+        message={'Remove all complete tasks?'}
+        onAccept={handleConfirmation}
+        onRefuse={() => setShowModal(false)}
+        onClickOutside={() => setShowModal(false)}
+      />
+    );
+  };
+
   return (
     <>
-      <EraserSVG onClick={eraseCompleteTasks}/>
+      {showModal && renderModal()}
+      <EraserSVG onClick={() => setShowModal(true)}/>
     </> 
   );
 };
