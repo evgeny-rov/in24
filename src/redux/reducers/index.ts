@@ -1,9 +1,6 @@
-import { ADD_TASK, TOGGLE_TASK, RESET_APP, REMOVE_TASK, ERASE_COMPLETE_TASKS } from '../actions/actionTypes';
-import getUniqueId from '../../utils/getUniqueId';
-import { omit, filter } from 'lodash';
-import { incompleteIdsSelector, incompleteTasksSelector } from '../../selectors'
-
-const ONE_DAY_IN_MS = 86400000;
+import { ADD_TASK, TOGGLE_TASK, RESET_APP, REMOVE_TASK, REMOVE_COMPLETE_TASKS } from '../actions/actionTypes';
+import getNextDay from '../../utils/getNextDay';
+import { omit, filter, pick } from 'lodash';
 
 const initialState: AppState = {
   tasksById: {
@@ -11,14 +8,13 @@ const initialState: AppState = {
     1: { id: 1, text: 'Add third task', isComplete: false },
   },
   allIds: [0, 1],
-  expires: Date.now() + ONE_DAY_IN_MS,
+  expires: getNextDay(),
 };
 
 export default (state: AppState = initialState, action: Action) => {
   switch (action.type) {
     case ADD_TASK: 
-      const { text } = action.payload;
-      const id = getUniqueId(state.allIds);
+      const { text, id } = action.payload;
       return {
         ...state,
         allIds: [...state.allIds, id],
@@ -43,17 +39,19 @@ export default (state: AppState = initialState, action: Action) => {
         allIds: filter(state.allIds, (id) => id !== removeId),
         tasksById: omit(state.tasksById, [removeId]),
       };
-    case ERASE_COMPLETE_TASKS:
+    case REMOVE_COMPLETE_TASKS:
+      const incompleteIds = filter(state.allIds, (id) => !state.tasksById[id].isComplete);
+      const incompleteTasks = pick(state.tasksById, [...incompleteIds]);
       return {
         ...state,
-        allIds: incompleteIdsSelector(state),
-        tasksById: incompleteTasksSelector(state),
+        allIds: incompleteIds,
+        tasksById: incompleteTasks,
       };
     case RESET_APP:
-      localStorage.removeItem('state');
+      const { expires } = action.payload;
       return {
         ...initialState,
-        expires: Date.now() + ONE_DAY_IN_MS,
+        expires,
       };
     default: 
       return state;

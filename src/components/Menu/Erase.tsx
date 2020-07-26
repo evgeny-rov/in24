@@ -1,19 +1,19 @@
 import React, { useState, FunctionComponent } from 'react';
 import { connect } from 'react-redux';
-import { eraseCompleteTasks } from '../../redux/actions';
+import { removeCompleteTasks } from '../../redux/actions';
 import { ReactComponent as EraserSVG } from '../../assets/eraser.svg';
 import Modal from '../Modal';
 
 interface Props {
-  eraseCompleteTasks: () => Action;
+  removeCompleteTasks: () => Action;
 }
 
-const Erase: FunctionComponent<Props> = ({ eraseCompleteTasks }) => {
+const Erase: FunctionComponent<Props> = ({ removeCompleteTasks }) => {
   const [showModal, setShowModal] = useState(false);
 
   const handleConfirmation = () => {
     setShowModal(false);
-    eraseCompleteTasks();
+    removeCompleteTasks();
   };
 
   const renderModal = () => {
@@ -35,4 +35,4 @@ const Erase: FunctionComponent<Props> = ({ eraseCompleteTasks }) => {
   );
 };
 
-export default connect(null, { eraseCompleteTasks })(Erase);
+export default connect(null, { removeCompleteTasks })(Erase);

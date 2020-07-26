@@ -2,15 +2,7 @@ import { createStore } from 'redux';
 import rootReducer from '../reducers/index';
 import throttle from 'lodash/throttle';
 
-const resetState = () => {
-  localStorage.clear();
-}
-
-const checkDateForExpiration = (expirationDate: number): boolean => {
-  const isStateExpired = expirationDate - Date.now() < 1000;
-  if (isStateExpired) resetState();
-  return isStateExpired;
-}
+const STATE_LOCAL_STORAGE_KEY = 'state';
 
 const loadState = () => {
   try {
@@ -18,9 +10,9 @@ const loadState = () => {
     if (serializedState === null) {
       return undefined;
     }
-      
-    const parsedState = JSON.parse(serializedState);
-    const isStateExpired = checkDateForExpiration(parsedState.expires);
+    const parsedState: AppState = JSON.parse(serializedState);
+    const isStateExpired = parsedState.expires - Date.now() < 1000;
+
     return isStateExpired ? undefined : parsedState;
   } catch (err) {
     return undefined;
@@ -30,7 +22,7 @@ const loadState = () => {
 const saveState = (state: AppState) => {
   try {
     const serializedState = JSON.stringify(state);
-    localStorage.setItem('state', serializedState);
+    localStorage.setItem(STATE_LOCAL_STORAGE_KEY, serializedState);
   } catch (err) {
     // ignore
   }
