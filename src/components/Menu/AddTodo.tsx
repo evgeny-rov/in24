@@ -1,23 +1,23 @@
 import React, { useState, FunctionComponent } from 'react';
 import { connect } from 'react-redux';
-import { addTask } from '../../redux/actions';
+import { addTodo } from '../../redux/actions';
 
 interface Props {
-  addTask: (text: string) => Action;
+  addTodo: (text: string) => Action;
 }
 
-const AddTask: FunctionComponent<Props> = ({ addTask }) => {
+const AddTodo: FunctionComponent<Props> = ({ addTodo }) => {
   const [text, setText] = useState('');
 
-  const handleAddTask = (e: React.SyntheticEvent) => {
+  const handleAddTodo = (e: React.SyntheticEvent) => {
     e.preventDefault();
-    addTask(text);
+    addTodo(text);
     setText('');
   };
 
   return (
     <div className="user-input menu-item">
-      <form onSubmit={handleAddTask}>
+      <form onSubmit={handleAddTodo}>
         <input
           className="input field"
           autoFocus
@@ -37,4 +37,4 @@ const AddTask: FunctionComponent<Props> = ({ addTask }) => {
   );
 }
 
-export default connect(null, { addTask })(AddTask);
+export default connect(null, { addTodo })(AddTodo);

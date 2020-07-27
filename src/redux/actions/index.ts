@@ -1,16 +1,17 @@
-import { ADD_TASK, TOGGLE_TASK, RESET_APP, REMOVE_TASK, REMOVE_COMPLETE_TASKS } from './actionTypes';
+import { ADD_TODO, TOGGLE_TODO, RESET_APP, REMOVE_TODO, REMOVE_COMPLETE_TODOS } from './actionTypes';
 import getNextDay from '../../utils/getNextDay';
+import { STATE_LOCAL_STORAGE_KEY } from '../store';
 
-export const addTask = (text: string) => ({
-    type: ADD_TASK,
+export const addTodo = (text: string) => ({
+    type: ADD_TODO,
     payload: {
       id: Date.now(),
       text,
     },
 });
 
-export const toggleTask = (id: number, nextStatus: boolean) => ({
-  type: TOGGLE_TASK,
+export const toggleTodo = (id: number, nextStatus: boolean) => ({
+  type: TOGGLE_TODO,
   payload: {
     id,
     nextStatus
@@ -18,7 +19,7 @@ export const toggleTask = (id: number, nextStatus: boolean) => ({
 });
 
 export const resetApp = () => {
-  localStorage.removeItem('state');
+  localStorage.removeItem(STATE_LOCAL_STORAGE_KEY);
   return {
     type: RESET_APP,
     payload: {
@@ -27,13 +28,13 @@ export const resetApp = () => {
   }
 };
 
-export const removeTask = (id: number) => ({
-  type: REMOVE_TASK,
+export const removeTodo = (id: number) => ({
+  type: REMOVE_TODO,
   payload: {
     id,
   },
 });
 
-export const removeCompleteTasks = () => ({
-  type: REMOVE_COMPLETE_TASKS,
+export const removeCompleteTodos = () => ({
+  type: REMOVE_COMPLETE_TODOS,
 })

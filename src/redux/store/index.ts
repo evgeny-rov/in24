@@ -2,11 +2,11 @@ import { createStore } from 'redux';
 import rootReducer from '../reducers/index';
 import throttle from 'lodash/throttle';
 
-const STATE_LOCAL_STORAGE_KEY = 'state';
+export const STATE_LOCAL_STORAGE_KEY = 'state';
 
 const loadState = () => {
   try {
-    const serializedState = localStorage.getItem('state');
+    const serializedState = localStorage.getItem(STATE_LOCAL_STORAGE_KEY);
     if (serializedState === null) {
       return undefined;
     }

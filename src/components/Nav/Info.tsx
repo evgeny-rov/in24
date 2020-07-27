@@ -10,10 +10,11 @@ export default () => {
   const renderPopup = () => {
     return (
       <div className="info-popup">
-        <span>Your tasks will be reset in 24 hours</span>
+        <span>Your todos will be reset in 24 hours</span>
         <span>Try to complete all of them in time!</span>
         <hr />
-        <span>Click twice on the checkbox to remove task</span>
+        <span>Click twice on the checkbox to remove todo</span>
+        <span>Use eraser to remove all complete todos</span>
       </div>
     );
   }

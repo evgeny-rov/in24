@@ -10,9 +10,9 @@ interface Props {
 }
 
 const Progress: FunctionComponent<Props> = ({ total, complete, expires }) => {
-  const isToDoComplete = total === complete;
-  const completeClassName = isToDoComplete ? 'progress-context complete' : 'progress-context';
-  const completeText = isToDoComplete ? 'Good job! Take a break or add new tasks' : `${complete}/${total}`;
+  const isListComplete = total === complete;
+  const completeClassName = isListComplete ? 'progress-context complete' : 'progress-context';
+  const completeText = isListComplete ? 'Good job! Take a break or add new todos' : `${complete}/${total}`;
   
   return (
     <div className="progress-container">

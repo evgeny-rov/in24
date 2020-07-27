@@ -1,14 +1,16 @@
 import React, { useState, FunctionComponent } from 'react';
 import { connect } from 'react-redux';
-import { resetApp } from '../../redux/actions';
+import { removeCompleteTodos, resetApp } from '../../redux/actions';
+import { ReactComponent as EraserSVG } from '../../assets/eraser.svg';
 import { ReactComponent as TrashSVG } from '../../assets/trash-can.svg';
 import Modal from '../Modal';
 
 interface Props {
   resetApp: () => Action;
+  removeCompleteTodos: () => Action;
 }
 
-const Restore: FunctionComponent<Props> = ({ resetApp }) => {
+const Modifiers: FunctionComponent<Props> = ({ removeCompleteTodos, resetApp }) => {
   const [showModal, setShowModal] = useState(false);
 
   const handleConfirmation = () => {
@@ -19,20 +21,21 @@ const Restore: FunctionComponent<Props> = ({ resetApp }) => {
   const renderModal = () => {
     return (
       <Modal 
-        message={'Reset all of your progress?'}
+        message='Reset all of your progress?'
         onAccept={handleConfirmation}
         onRefuse={() => setShowModal(false)}
         onClickOutside={() => setShowModal(false)}
       />
     );
   };
-  
+
   return (
-    <>
+    <div className="action-btns-wrapper">
       {showModal && renderModal()}
       <TrashSVG onClick={() => setShowModal(true)} />
-    </>
+      <EraserSVG onClick={removeCompleteTodos} />
+    </div>
   );
 }
 
-export default connect(null, { resetApp })(Restore);
+export default connect(null, { removeCompleteTodos, resetApp })(Modifiers);

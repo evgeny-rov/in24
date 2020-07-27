@@ -126,7 +126,7 @@ svg:hover {
 
 /* todo styling */
 
-.todo-container {
+.todo-list-container {
   position: relative;
   display: flex;
   justify-content: center;
@@ -152,7 +152,7 @@ svg:hover {
   user-select: none;
 }
 
-#task-list {
+#todo-list {
   position: relative;
   box-sizing: border-box;
   list-style: none;
@@ -165,21 +165,21 @@ svg:hover {
   z-index: 2;
 }
 
-#task-list::-webkit-scrollbar {
+#todo-list::-webkit-scrollbar {
   width: 8px;
 }
 
-#task-list::-webkit-scrollbar-track {
+#todo-list::-webkit-scrollbar-track {
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.452);
 	border-radius: 10px;
 }
 
-#task-list::-webkit-scrollbar-thumb {
+#todo-list::-webkit-scrollbar-thumb {
   border-radius: 10px;
 	background: grey;
 }
 
-.task-wrapper {
+.todo-wrapper {
   display: flex;
   align-items: baseline;
 }
@@ -244,9 +244,6 @@ li::first-letter {
 
 .nav-item {
   height: 100%;
-}
-
-.action-btns-wrapper svg {
 }
 
 .nav-info {

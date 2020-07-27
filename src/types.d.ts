@@ -3,7 +3,7 @@ declare interface Action {
   payload?: any;
 }
 
-declare interface Task {
+declare interface Todo {
   id: number;
   text: string;
   isComplete: boolean;
@@ -11,7 +11,7 @@ declare interface Task {
 
 declare interface AppState {
   allIds: number[];
-  tasksById: {
+  todosById: {
     [id: number]: Task;
   };
   expires: number;
