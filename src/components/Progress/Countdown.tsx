@@ -9,10 +9,10 @@ interface Props {
 
 const CountDown: FunctionComponent<Props> = ({ countAmount, resetApp }) => {
   const [time, setTime] = useState(countAmount);
-  
+
   useEffect(() => {
     if (time < 1000) {
-      resetApp()
+      resetApp();
     } else {
       const timerId = setTimeout(() => setTime(time - 1000), 995);
       return () => clearTimeout(timerId);
@@ -22,6 +22,6 @@ const CountDown: FunctionComponent<Props> = ({ countAmount, resetApp }) => {
   return (
     <span className="countdown">{new Date(time).toUTCString().slice(-12, -4)}</span>
   );
-}
+};
 
 export default connect(null, { resetApp })(CountDown);

@@ -233,9 +233,6 @@ li::first-letter {
 
 .menu-nav {
   box-sizing: border-box;
-  /*
-  padding: 0.6rem 0.8rem;
-  */
   height: 60%;
   display: flex;
   justify-content: space-between;
@@ -251,7 +248,12 @@ li::first-letter {
   align-items: center;
 }
 
-.info-popup {
+.nav-info:hover > .info-tooltip {
+  display: block;
+}
+
+.info-tooltip {
+  display: none;
   position: absolute;
   background: rgba(0, 0, 0, 0.301);
   color: #fff;
@@ -263,7 +265,7 @@ li::first-letter {
   font-size: 0.9rem;
 }
 
-.info-popup span {
+.info-tooltip span {
   display: block;
 }
 
@@ -305,7 +307,7 @@ li::first-letter {
 }
 
 @media (max-width: 35rem) {
-  .todo-container {
+  .todo-list-container {
     height: 100%;
     width: 100%;
     border-radius: 0;

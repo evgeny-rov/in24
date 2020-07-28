@@ -10,4 +10,4 @@ export default (allowedInterval: number = 500) => {
       setTimestamp(Date.now());
     }
   };
-}
+};

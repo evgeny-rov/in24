@@ -9,6 +9,6 @@ const Nav = () => {
       <Info />
     </div>
   );
-}
+};
 
 export default Nav;

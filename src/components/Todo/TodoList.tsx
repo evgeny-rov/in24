@@ -12,19 +12,17 @@ const TodoList: FunctionComponent<Props> = ({ todos }) => {
 
   useEffect(() => {
     listRef.current.scrollTop = listRef.current.scrollHeight;
-  }, [todos.length])
+  }, [todos.length]);
 
   return (
     <ul ref={listRef} id="todo-list">
-      {todos.map(({ id, text, isComplete}) => {
-        return (<TodoItem key={id} id={id} text={text} isComplete={isComplete} />);
-      })}
+      {todos.map(({ id, text, isComplete }) => (
+        <TodoItem key={id} id={id} text={text} isComplete={isComplete} />
+      ))}
     </ul>
   );
-}
+};
 
-const mapStateToProps = (state: AppState) => {
-  return { todos: todosSelector(state) };
-}
+const mapStateToProps = (state: AppState) => ({ todos: todosSelector(state) });
 
 export default connect(mapStateToProps)(TodoList);

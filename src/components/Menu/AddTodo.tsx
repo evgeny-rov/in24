@@ -17,10 +17,9 @@ const AddTodo: FunctionComponent<Props> = ({ addTodo }) => {
 
   return (
     <div className="user-input menu-item">
-      <form onSubmit={handleAddTodo}>
+      <form onSubmit={handleAddTodo} action="#">
         <input
           className="input field"
-          autoFocus
           type="text"
           placeholder="New task..."
           value={text}
@@ -35,6 +34,6 @@ const AddTodo: FunctionComponent<Props> = ({ addTodo }) => {
       </form>
     </div>
   );
-}
+};
 
 export default connect(null, { addTodo })(AddTodo);

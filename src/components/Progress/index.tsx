@@ -11,19 +11,27 @@ interface Props {
 
 const Progress: FunctionComponent<Props> = ({ total, complete, expires }) => {
   const isListComplete = total === complete;
-  const completeClassName = isListComplete ? 'progress-context complete' : 'progress-context';
-  const completeText = isListComplete ? 'Good job! Take a break or add new todos' : `${complete}/${total}`;
-  
+  const completeClassName = isListComplete
+    ? 'progress-context complete'
+    : 'progress-context';
+  const completeText = isListComplete
+    ? 'Good job! Take a break or add new todos'
+    : `${complete}/${total}`;
+
   return (
     <div className="progress-container">
-      <progress id="progress-status-bar" value={complete} max={total}></progress>
+      <progress
+        id="progress-status-bar"
+        value={complete}
+        max={total}
+      />
       <div className={completeClassName}>
-        <Countdown key={expires} countAmount={expires - Date.now()}/>
+        <Countdown key={expires} countAmount={expires - Date.now()} />
         <span className="progress-context-count">{completeText}</span>
       </div>
     </div>
   );
-}
+};
 
 const mapStateToProps = (state: AppState) => progressSelector(state);
 

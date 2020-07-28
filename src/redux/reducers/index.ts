@@ -1,6 +1,12 @@
-import { ADD_TODO, TOGGLE_TODO, RESET_APP, REMOVE_TODO, REMOVE_COMPLETE_TODOS } from '../actions/actionTypes';
-import getNextDay from '../../utils/getNextDay';
 import { omit, filter, pick } from 'lodash';
+import {
+  ADD_TODO,
+  TOGGLE_TODO,
+  RESET_APP,
+  REMOVE_TODO,
+  REMOVE_COMPLETE_TODOS,
+} from '../actions/actionTypes';
+import getNextDay from '../../utils/getNextDay';
 
 const initialState: AppState = {
   todosById: {
@@ -13,7 +19,7 @@ const initialState: AppState = {
 
 export default (state: AppState = initialState, action: Action) => {
   switch (action.type) {
-    case ADD_TODO: 
+    case ADD_TODO: {
       const { text, id } = action.payload;
       return {
         ...state,
@@ -23,23 +29,26 @@ export default (state: AppState = initialState, action: Action) => {
           [id]: { id, text, isComplete: false },
         },
       };
-    case TOGGLE_TODO:
-      const { id: toggleId, nextStatus } = action.payload;
+    }
+    case TOGGLE_TODO: {
+      const { id, nextStatus } = action.payload;
       return {
         ...state,
         todosById: {
           ...state.todosById,
-          [toggleId]: {...state.todosById[toggleId], isComplete: nextStatus },
+          [id]: { ...state.todosById[id], isComplete: nextStatus },
         },
       };
-    case REMOVE_TODO: 
-      const { id: removeId } = action.payload;
+    }
+    case REMOVE_TODO: {
+      const { id } = action.payload;
       return {
         ...state,
-        allIds: filter(state.allIds, (id) => id !== removeId),
-        todosById: omit(state.todosById, [removeId]),
+        allIds: filter(state.allIds, (itemId) => itemId !== id),
+        todosById: omit(state.todosById, [id]),
       };
-    case REMOVE_COMPLETE_TODOS:
+    }
+    case REMOVE_COMPLETE_TODOS: {
       const incompleteIds = filter(state.allIds, (id) => !state.todosById[id].isComplete);
       const incompletetodos = pick(state.todosById, [...incompleteIds]);
       return {
@@ -47,13 +56,16 @@ export default (state: AppState = initialState, action: Action) => {
         allIds: incompleteIds,
         todosById: incompletetodos,
       };
-    case RESET_APP:
+    }
+    case RESET_APP: {
       const { expires } = action.payload;
       return {
         ...initialState,
         expires,
       };
-    default: 
+    }
+    default: {
       return state;
+    }
   }
 };

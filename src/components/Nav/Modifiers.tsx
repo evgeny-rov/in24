@@ -24,7 +24,6 @@ const Modifiers: FunctionComponent<Props> = ({ removeCompleteTodos, resetApp }) 
         message='Reset all of your progress?'
         onAccept={handleConfirmation}
         onRefuse={() => setShowModal(false)}
-        onClickOutside={() => setShowModal(false)}
       />
     );
   };

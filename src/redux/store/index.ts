@@ -1,6 +1,6 @@
 import { createStore } from 'redux';
-import rootReducer from '../reducers/index';
 import throttle from 'lodash/throttle';
+import rootReducer from '../reducers/index';
 
 export const STATE_LOCAL_STORAGE_KEY = 'state';
 
