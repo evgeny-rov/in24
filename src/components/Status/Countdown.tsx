@@ -20,8 +20,15 @@ const CountDown: FunctionComponent<Props> = ({ countAmount, resetApp }) => {
   }, [time, resetApp]);
 
   return (
-    <span className="countdown">{new Date(time).toUTCString().slice(-12, -4)}</span>
+    <span className="countdown">
+      {new Date(time).toUTCString().slice(-12, -4)}
+    </span>
   );
 };
 
-export default connect(null, { resetApp })(CountDown);
+const mapStateToProps = ({ expires }: AppState) => ({
+  countAmount: expires - Date.now(),
+  key: expires,
+});
+
+export default connect(mapStateToProps, { resetApp })(CountDown);

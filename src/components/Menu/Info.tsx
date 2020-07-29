@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ReactComponent as InfoSVG } from '../../assets/info.svg';
 
 export default () => {
@@ -14,4 +14,4 @@ export default () => {
       <InfoSVG />
     </div>
   );
-}
+};

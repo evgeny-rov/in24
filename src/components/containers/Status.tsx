@@ -1,4 +1,13 @@
 import React, { FunctionComponent } from 'react';
+
+const Status: FunctionComponent = ({ children }) => {
+  return <div className="progress-container">{children}</div>;
+};
+
+export default Status;
+
+/*
+import React, { FunctionComponent } from 'react';
 import { connect } from 'react-redux';
 import Countdown from './Countdown';
 import { progressSelector } from '../../selectors';
@@ -36,3 +45,5 @@ const Progress: FunctionComponent<Props> = ({ total, complete, expires }) => {
 const mapStateToProps = (state: AppState) => progressSelector(state);
 
 export default connect(mapStateToProps)(Progress);
+
+*/
