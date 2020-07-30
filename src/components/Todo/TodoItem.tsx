@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react';
 import { connect } from 'react-redux';
 import { toggleTodo, removeTodo } from '../../redux/actions';
 import useDoubleClick from '../../hooks/useCleanDoubleClick';
+import { TodoItemWrapper, TodoItemStyled, CheckBox } from '../../styled/todo';
 
 interface Props extends Todo {
   toggleTodo: (id: number, nextStatus: boolean) => Action;
@@ -16,24 +17,25 @@ const Todo: FunctionComponent<Props> = ({
   removeTodo,
 }) => {
   const onDoubleClick = useDoubleClick();
-  const clsNames = isComplete ? 'complete' : '';
-
   const doubleClickHandler = () => removeTodo(id);
 
   return (
-    <div className="todo-wrapper">
-      <input
+    <TodoItemWrapper>
+      <CheckBox
         onClick={() => onDoubleClick(doubleClickHandler)}
-        className="checkmark"
         type="checkbox"
         name="complete"
         readOnly
         checked={isComplete}
       />
-      <li role="presentation" className={clsNames} onClick={() => toggleTodo(id, !isComplete)}>
+      <TodoItemStyled
+        role="presentation"
+        complete={isComplete}
+        onClick={() => toggleTodo(id, !isComplete)}
+      >
         <span>{text}</span>
-      </li>
-    </div>
+      </TodoItemStyled>
+    </TodoItemWrapper>
   );
 };
 

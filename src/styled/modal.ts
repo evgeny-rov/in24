@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { Overlay } from './components';
+import styled from 'styled-components/macro';
+import { Overlay } from './general';
 
 export const ModalOverlay = styled(Overlay)`
   background: rgba(0, 0, 0, 0.938);
@@ -21,7 +21,7 @@ export const ModalBtn = styled.input`
   background: rgb(107, 74, 74);
   color: #fff;
   border-radius: 3px;
-  transition: all .5s;
+  transition: all 0.5s;
 
   &:hover {
     background: rgb(231, 71, 106);

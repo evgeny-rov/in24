@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { createGlobalStyle } from 'styled-components';
+import styled from 'styled-components/macro';
+import { createGlobalStyle } from 'styled-components/macro';
 
 export const GlobalStyle = createGlobalStyle`
   body {
@@ -7,6 +7,20 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Ubuntu Mono', monospace;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  svg, svg path {
+    fill: rgb(143, 143, 143);
+    transition: all 1s;
+    padding: 0.7rem;
+  }
+
+  svg:hover {
+    transform: rotate(-180deg);
+  }
+
+  svg:hover path {
+    fill: rgb(231, 71, 106);
   }
 `;
 

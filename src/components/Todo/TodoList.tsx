@@ -2,9 +2,10 @@ import React, { useRef, useEffect, FunctionComponent } from 'react';
 import { connect } from 'react-redux';
 import TodoItem from './TodoItem';
 import { todosSelector } from '../../selectors';
+import { TodoListStyled } from '../../styled/todo';
 
 interface Props {
-  todos: Array<Todo>,
+  todos: Array<Todo>;
 }
 
 const TodoList: FunctionComponent<Props> = ({ todos }) => {
@@ -15,11 +16,11 @@ const TodoList: FunctionComponent<Props> = ({ todos }) => {
   }, [todos.length]);
 
   return (
-    <ul ref={listRef} id="todo-list">
+    <TodoListStyled ref={listRef}>
       {todos.map(({ id, text, isComplete }) => (
         <TodoItem key={id} id={id} text={text} isComplete={isComplete} />
       ))}
-    </ul>
+    </TodoListStyled>
   );
 };
 

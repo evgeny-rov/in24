@@ -29,7 +29,7 @@ const Modifiers: FunctionComponent<Props> = ({ removeCompleteTodos, resetApp }) 
   };
 
   return (
-    <div className="action-btns-wrapper">
+    <div>
       {showModal && renderModal()}
       <TrashSVG onClick={() => setShowModal(true)} />
       <EraserSVG onClick={removeCompleteTodos} />

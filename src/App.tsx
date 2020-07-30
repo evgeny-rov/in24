@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import Menu from './components/containers/Menu';
 import Status from './components/containers/Status';
 import Toolbar from './components/containers/Toolbar';
@@ -11,7 +10,7 @@ import Modifiers from './components/Menu/Modifiers';
 import Info from './components/Menu/Info';
 import AddTodo from './components/Menu/AddTodo';
 
-import { AppWrapper, BGLogo, TodoContainer } from './styled/components';
+import { AppWrapper, BGLogo, TodoContainer } from './styled/general';
 
 function App() {
   return (
