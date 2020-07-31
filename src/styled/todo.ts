@@ -1,10 +1,11 @@
 import styled from 'styled-components/macro';
+import { motion } from 'framer-motion';
 
 interface TodoItemProps {
   readonly complete: boolean;
 }
 
-export const TodoListStyled = styled.ul`
+export const TodoListStyled = styled(motion.ul)`
   list-style: none;
   position: relative;
   box-sizing: border-box;
@@ -31,7 +32,7 @@ export const TodoListStyled = styled.ul`
   }
 `;
 
-export const TodoItemWrapper = styled.div`
+export const TodoItemWrapper = styled(motion.div)`
   display: flex;
   align-items: baseline;
 `;

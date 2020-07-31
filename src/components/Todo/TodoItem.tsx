@@ -9,6 +9,11 @@ interface Props extends Todo {
   removeTodo: (id: number) => Action;
 }
 
+const item: any = {
+  hidden: { x: -120 },
+  show: { x: 0 },
+};
+
 const Todo: FunctionComponent<Props> = ({
   id,
   text,
@@ -20,7 +25,7 @@ const Todo: FunctionComponent<Props> = ({
   const doubleClickHandler = () => removeTodo(id);
 
   return (
-    <TodoItemWrapper>
+    <TodoItemWrapper variants={item}>
       <CheckBox
         onClick={() => onDoubleClick(doubleClickHandler)}
         type="checkbox"

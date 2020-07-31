@@ -8,6 +8,16 @@ interface Props {
   todos: Array<Todo>;
 }
 
+const container: any = {
+  hidden: { x: -100 },
+  show: {
+    x: 0,
+    transition: {
+      staggerChildren: 0.1,
+    }
+  }
+}
+
 const TodoList: FunctionComponent<Props> = ({ todos }) => {
   const listRef: any = useRef(null);
 
@@ -16,7 +26,7 @@ const TodoList: FunctionComponent<Props> = ({ todos }) => {
   }, [todos.length]);
 
   return (
-    <TodoListStyled ref={listRef}>
+    <TodoListStyled ref={listRef} variants={container} initial="hidden" animate="show">
       {todos.map(({ id, text, isComplete }) => (
         <TodoItem key={id} id={id} text={text} isComplete={isComplete} />
       ))}

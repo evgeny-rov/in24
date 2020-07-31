@@ -9,18 +9,24 @@ export const GlobalStyle = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
   }
 
-  svg, svg path {
+  svg:not(#checkbox) {
     fill: rgb(143, 143, 143);
     transition: all 1s;
     padding: 0.7rem;
-  }
 
-  svg:hover {
-    transform: rotate(-180deg);
-  }
+    & path {
+      fill: rgb(143, 143, 143);
+      transition: all 1s;
+      padding: 0.7rem;
+    }
 
-  svg:hover path {
-    fill: rgb(231, 71, 106);
+    &:hover {
+      transform: rotate(-180deg);
+    }
+
+    &:hover path {
+      fill: rgb(231, 71, 106);
+    }
   }
 `;
 
