@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from 'react';
-import { ToolbarStyled } from '../../styled/menu';
+import { StyledToolbar } from '../../styled/menu';
 
 const Toolbar: FunctionComponent = ({ children }) => {
-  return <ToolbarStyled>{children}</ToolbarStyled>;
+  return <StyledToolbar>{children}</StyledToolbar>;
 };
 
 export default Toolbar;

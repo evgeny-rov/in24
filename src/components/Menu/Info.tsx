@@ -9,7 +9,8 @@ export default () => {
         <span>Your todos will be reset in 24 hours.</span>
         <span>Try to complete all of them in time!</span>
         <hr />
-        <span>Click twice on the checkbox to remove todo.</span>
+        <span>To remove todo swipe it to the right,</span>
+        <span>or click twice on the checkbox.</span>
         <span>Use eraser to remove all complete todos.</span>
       </StyledToolTip>
       <InfoSVG />

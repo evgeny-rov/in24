@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import { connect } from 'react-redux';
 import { progressSelector } from '../../selectors';
-import { ProgressBarStyled } from '../../styled/status';
+import { StyledProgressBar } from '../../styled/status';
 
 interface Props {
   total: number;
@@ -9,7 +9,7 @@ interface Props {
 }
 
 const ProgressBar: FunctionComponent<Props> = ({ total, complete }) => {
-  return <ProgressBarStyled value={complete} max={total} />;
+  return <StyledProgressBar value={complete} max={total} />;
 };
 
 const mapStateToProps = (state: AppState) => progressSelector(state);

@@ -9,7 +9,7 @@ export const GlobalStyle = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
   }
 
-  svg:not(#checkbox) {
+  svg:not(#checkmark) {
     fill: rgb(143, 143, 143);
     transition: all 1s;
     padding: 0.7rem;
@@ -53,7 +53,6 @@ export const TodoContainer = styled.div`
   box-sizing: border-box;
   width: 30rem;
   height: 40rem;
-  padding: 1em;
   background: rgb(45, 45, 45);
   border-radius: 0.5em;
   box-shadow: 0 0 20px 5px rgb(35, 35, 35);

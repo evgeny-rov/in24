@@ -21,7 +21,7 @@ const AddTodo: FunctionComponent<Props> = ({ addTodo }) => {
       <StyledInputField
         className="input field"
         type="text"
-        placeholder="New task..."
+        placeholder="New todo..."
         value={text}
         onChange={(e) => setText(e.target.value)}
       />

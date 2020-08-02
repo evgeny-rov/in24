@@ -14,7 +14,7 @@ export const MenuItem = styled.div`
   width: 100%;
 `;
 
-export const ToolbarStyled = styled(MenuItem)`
+export const StyledToolbar = styled(MenuItem)`
   height: 60%;
   display: flex;
   justify-content: space-between;
