@@ -1,1 +1,0 @@
-export default (ms: number) => new Date(ms).toUTCString().slice(-12, -4);
