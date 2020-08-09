@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { connect } from 'react-redux';
+import { useDragControls } from 'framer-motion';
 import useDoubleClick from '../../hooks/useCleanDoubleClick';
 import { toggleTodo, removeTodo } from '../../redux/actions';
 import { StyledListItem, CustomCheckbox } from '../../styled/todo';
@@ -11,8 +12,8 @@ interface Props extends Todo {
 }
 
 const item: any = {
-  hidden: { x: -200, rotate: 0 },
-  show: { x: 0, rotate: 0 },
+  hidden: { x: -200 },
+  show: { x: 0 },
 };
 
 const Todo: FunctionComponent<Props> = ({
@@ -23,6 +24,7 @@ const Todo: FunctionComponent<Props> = ({
   removeTodo,
 }) => {
   const onDoubleClick = useDoubleClick(300);
+
   const doubleClickHandler = () => removeTodo(id);
 
   return (

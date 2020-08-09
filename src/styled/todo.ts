@@ -6,20 +6,19 @@ interface TodoItemProps {
 }
 
 export const StyledTodoList = styled(motion.ul)`
-  position: relative;
   list-style: none;
   box-sizing: border-box;
   width: 85%;
   height: 70%;
-  padding-inline-start: 0;
   text-align: left;
   overflow-y: auto;
   overflow-x: hidden;
   line-height: 2rem;
   z-index: 2;
+  padding-inline-start: 0;
 
   &::-webkit-scrollbar {
-    width: 8px;
+    width: 12px;
   }
 
   &::-webkit-scrollbar-track {
@@ -30,6 +29,10 @@ export const StyledTodoList = styled(motion.ul)`
   &::-webkit-scrollbar-thumb {
     border-radius: 10px;
     background: grey;
+  }
+
+  @media(max-height: 450px) {
+    height: 50%;
   }
 `;
 

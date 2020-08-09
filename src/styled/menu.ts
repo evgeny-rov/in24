@@ -24,7 +24,7 @@ export const StyledToolbar = styled(MenuItem)`
 export const StyledToolTip = styled.div`
   display: none;
   position: absolute;
-  background: rgba(0, 0, 0, 0.301);
+  background: rgb(20, 20, 20);
   color: #fff;
   bottom: 100%;
   right: 2rem;
