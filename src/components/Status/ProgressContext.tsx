@@ -12,7 +12,7 @@ const getTextByProgress = (total: number, complete: number) => {
   if (total < 1) {
     return 'Add some todos';
   } else if (total - complete === 0) {
-    return 'Great job! Take a break or add new todos';
+    return 'Good job! Take a break or add new todos';
   }
   return `${complete}/${total}`;
 };

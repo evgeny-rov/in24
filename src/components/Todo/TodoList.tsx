@@ -3,13 +3,14 @@ import { connect } from 'react-redux';
 import TodoItem from './TodoItem';
 import { todosSelector } from '../../selectors';
 import { StyledTodoList } from '../../styled/todo';
-import isMobile from '../../utils/isMobile';
+import useFramerMobileScrollFix from '../../hooks/useFramerMobileScrollFix';
+import usePrevious from '../../hooks/usePrevious';
 
 interface Props {
   todos: Array<Todo>;
 }
 
-const container: any = {
+const animsContainer: any = {
   show: {
     transition: {
       staggerChildren: 0.1,
@@ -17,42 +18,24 @@ const container: any = {
   },
 };
 
-let prevTodosLength: number;
-
 const TodoList: FunctionComponent<Props> = ({ todos }) => {
   const listRef: any = useRef(null);
-  let clicked = false;
+  const scrollFixHandler = useFramerMobileScrollFix(listRef);
+  const previousTodosLength: number = usePrevious(todos.length);
 
   useEffect(() => {
-      if (prevTodosLength && prevTodosLength < todos.length) {
-        listRef.current.scrollTop = listRef.current.scrollHeight;
-      } else {
-        prevTodosLength = todos.length;
-      }
-  }, [todos.length]);
-
-  const customScrollFix = (e: any, info: any) => {
-    const xThreshold = 20;
-    const x = info.offset.x;
-    const xEngaged = x > xThreshold;
-    const yDelta = info.delta.y;
-    if (yDelta < 0) {
-      listRef.current.scrollTop += Math.abs(yDelta);
-    } else if (yDelta > 0) {
-      listRef.current.scrollTop -= yDelta;
+    if (todos.length > previousTodosLength) {
+      listRef.current.scrollTop = listRef.current.scrollHeight;
     }
-
-  } 
+  }, [todos.length, previousTodosLength]);
 
   return (
     <StyledTodoList
       ref={listRef}
-      variants={container}
+      variants={animsContainer}
       initial="hidden"
       animate="show"
-      onPan={customScrollFix}
-      onMouseDown={() => (clicked = true)}
-      onMouseUp={() => (clicked = false)}
+      onPan={scrollFixHandler}
     >
       {todos.map(({ id, text, isComplete }) => (
         <TodoItem key={id} id={id} text={text} isComplete={isComplete} />

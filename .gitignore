@@ -10,7 +10,7 @@
 
 # production
 /build
-/ghpages
+/gh-pages
 
 # misc
 temp.ts

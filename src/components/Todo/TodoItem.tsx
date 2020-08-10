@@ -1,6 +1,5 @@
 import React, { FunctionComponent } from 'react';
 import { connect } from 'react-redux';
-import { useDragControls } from 'framer-motion';
 import useDoubleClick from '../../hooks/useCleanDoubleClick';
 import { toggleTodo, removeTodo } from '../../redux/actions';
 import { StyledListItem, CustomCheckbox } from '../../styled/todo';
@@ -35,6 +34,7 @@ const Todo: FunctionComponent<Props> = ({
       onClick={() => toggleTodo(id, !isComplete)}
       onDragEnd={(e, info) => info.offset.x > 150 && removeTodo(id)}
       drag="x"
+      dragDirectionLock
       dragElastic={1}
       dragConstraints={{ left: 0, right: 0 }}
     >
