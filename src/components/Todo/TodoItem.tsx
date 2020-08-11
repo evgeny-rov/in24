@@ -10,7 +10,7 @@ interface Props extends Todo {
   removeTodo: (id: number) => Action;
 }
 
-const item: any = {
+const itemAnims: any = {
   hidden: { x: -200 },
   show: { x: 0 },
 };
@@ -28,8 +28,8 @@ const Todo: FunctionComponent<Props> = ({
 
   return (
     <StyledListItem
-      complete={isComplete}
-      variants={item}
+      isComplete={isComplete}
+      variants={itemAnims}
       role="presentation"
       onClick={() => toggleTodo(id, !isComplete)}
       onDragEnd={(e, info) => info.offset.x > 150 && removeTodo(id)}
@@ -38,7 +38,7 @@ const Todo: FunctionComponent<Props> = ({
       dragElastic={1}
       dragConstraints={{ left: 0, right: 0 }}
     >
-      <CustomCheckbox complete={isComplete}>
+      <CustomCheckbox isComplete={isComplete}>
         <input
           type="checkbox"
           name="complete"

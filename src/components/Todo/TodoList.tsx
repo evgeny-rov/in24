@@ -21,7 +21,7 @@ const animsContainer: any = {
 const TodoList: FunctionComponent<Props> = ({ todos }) => {
   const listRef: any = useRef(null);
   const scrollFixHandler = useFramerMobileScrollFix(listRef);
-  const previousTodosLength: number = usePrevious(todos.length);
+  const previousTodosLength = usePrevious(todos.length);
 
   useEffect(() => {
     if (todos.length > previousTodosLength) {

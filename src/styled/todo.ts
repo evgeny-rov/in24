@@ -2,7 +2,7 @@ import styled from 'styled-components/macro';
 import { motion } from 'framer-motion';
 
 interface TodoItemProps {
-  readonly complete: boolean;
+  readonly isComplete: boolean;
 }
 
 export const StyledTodoList = styled(motion.ul)`
@@ -42,8 +42,8 @@ export const StyledListItem = styled(motion.li)<TodoItemProps>`
   border-radius: 5px;
   padding: 0 0.5rem;
   cursor: pointer;
-  text-decoration: ${(props) => (props.complete ? 'line-through' : 'none')};
-  color: ${(props) => (props.complete ? 'grey' : 'white')};
+  text-decoration: ${(props) => (props.isComplete ? 'line-through' : 'none')};
+  color: ${(props) => (props.isComplete ? 'grey' : 'white')};
 
   &:hover, &:focus {
     background: rgba(150, 150, 150, 0.1);
@@ -69,13 +69,13 @@ export const CustomCheckbox = styled.label<TodoItemProps>`
   width: 10px;
   height: 10px;
   border-radius: 2px;
-  background: ${(props) => (props.complete ? 'rgb(231, 71, 106)' : 'none')};
+  background: ${(props) => (props.isComplete ? 'rgb(231, 71, 106)' : 'none')};
   border: ${(props) =>
-    props.complete
+    props.isComplete
       ? '1px solid rgb(231, 71, 106)'
       : '1px solid rgba(150, 150, 150, 0.3)'};
   box-shadow: ${(props) =>
-    props.complete ? '0 0 4px rgb(231, 71, 106)' : 'none'};
+    props.isComplete ? '0 0 4px rgb(231, 71, 106)' : 'none'};
   transition: all 0.2s;
 
   input {
