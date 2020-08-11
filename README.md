@@ -1,4 +1,11 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# What is in24?
+
+[in24](https://evgeny-rov.github.io/in24/) is an installable PWA todo app that resets your progress after 24 hours have passed.<br />
+The main purpose of [in24](https://evgeny-rov.github.io/in24/) is to motivate you to complete your planned todos in a day.
+
+## Try it out
+
+Latest live version hosted on GitHub Pages: [in24](https://evgeny-rov.github.io/in24/).
 
 ## Available Scripts
 
