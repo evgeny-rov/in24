@@ -7,6 +7,16 @@ The main purpose of [in24](https://evgeny-rov.github.io/in24/) is to motivate yo
 
 Latest live version hosted on GitHub Pages: [in24](https://evgeny-rov.github.io/in24/).
 
+## Tech Stack
+
+in24 uses: 
+  - Typescript
+  - React
+  - Redux
+  - Reselect
+  - styled-components
+  - Framer Motion
+
 ## Basic Available Scripts
 
 In the project directory, you can run:
