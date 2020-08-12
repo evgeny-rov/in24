@@ -1,6 +1,7 @@
 # What is in24?
 
 [in24](https://evgeny-rov.github.io/in24/) is an installable PWA todo app that resets your progress after 24 hours have passed.<br />
+
 The main purpose of [in24](https://evgeny-rov.github.io/in24/) is to motivate you to complete your planned todos in a day.
 
 ## Try it out
