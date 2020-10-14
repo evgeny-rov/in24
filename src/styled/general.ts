@@ -1,5 +1,5 @@
-import styled from 'styled-components/macro';
-import { createGlobalStyle } from 'styled-components/macro';
+import styled from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
   body {

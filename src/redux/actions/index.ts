@@ -4,6 +4,7 @@ import {
   RESET_APP,
   REMOVE_TODO,
   REMOVE_COMPLETE_TODOS,
+  TOGGLE_COUNTDOWN,
 } from './actionTypes';
 
 import getNextDay from '../../utils/getNextDay';
@@ -44,4 +45,11 @@ export const removeTodo = (id: number) => ({
 
 export const removeCompleteTodos = () => ({
   type: REMOVE_COMPLETE_TODOS,
+  payload: {
+    expires: getNextDay(),
+  },
+});
+
+export const toggleCountdown = () => ({
+  type: TOGGLE_COUNTDOWN,
 });

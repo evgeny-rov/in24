@@ -5,6 +5,7 @@ import {
   RESET_APP,
   REMOVE_TODO,
   REMOVE_COMPLETE_TODOS,
+  TOGGLE_COUNTDOWN,
 } from '../actions/actionTypes';
 import getNextDay from '../../utils/getNextDay';
 
@@ -15,6 +16,7 @@ const initialState: AppState = {
   },
   allIds: [0, 1],
   expires: getNextDay(),
+  isCountdownDisabled: false,
 };
 
 export default (state: AppState = initialState, action: Action) => {
@@ -49,12 +51,14 @@ export default (state: AppState = initialState, action: Action) => {
       };
     }
     case REMOVE_COMPLETE_TODOS: {
+      const { expires } = action.payload;
       const incompleteIds = filter(state.allIds, (id) => !state.todosById[id].isComplete);
       const incompletetodos = pick(state.todosById, [...incompleteIds]);
       return {
         ...state,
         allIds: incompleteIds,
         todosById: incompletetodos,
+        expires,
       };
     }
     case RESET_APP: {
@@ -62,6 +66,12 @@ export default (state: AppState = initialState, action: Action) => {
       return {
         ...initialState,
         expires,
+      };
+    }
+    case TOGGLE_COUNTDOWN: {
+      return {
+        ...state,
+        isCountdownDisabled: !state.isCountdownDisabled,
       };
     }
     default: {

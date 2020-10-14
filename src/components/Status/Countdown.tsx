@@ -6,17 +6,23 @@ import oneDayInMsToString from '../../utils/oneDayInMstoString';
 
 interface Props {
   countAmount: number;
+  isCountdownDisabled: boolean;
   resetApp: () => Action;
 }
 
-const Countdown: FunctionComponent<Props> = ({ countAmount, resetApp }) => {
+const Countdown: FunctionComponent<Props> = ({
+  countAmount,
+  isCountdownDisabled,
+  resetApp,
+}) => {
   const timeLeft = useCountdown(countAmount, resetApp);
 
-  return <span>{oneDayInMsToString(timeLeft)}</span>;
+  return <span>{!isCountdownDisabled && oneDayInMsToString(timeLeft)}</span>;
 };
 
-const mapStateToProps = ({ expires }: AppState) => ({
+const mapStateToProps = ({ expires, isCountdownDisabled }: AppState) => ({
   countAmount: expires - Date.now(),
+  isCountdownDisabled,
   key: expires,
 });
 
