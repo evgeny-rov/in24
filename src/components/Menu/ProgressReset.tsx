@@ -1,16 +1,14 @@
 import React, { useState, FunctionComponent } from 'react';
 import { connect } from 'react-redux';
-import { removeCompleteTodos, resetApp } from '../../redux/actions';
-import { ReactComponent as EraserSVG } from '../../assets/eraser.svg';
+import { resetApp } from '../../redux/actions';
 import { ReactComponent as TrashSVG } from '../../assets/trash-can.svg';
 import Modal from '../Modal';
 
 interface Props {
   resetApp: () => Action;
-  removeCompleteTodos: () => Action;
 }
 
-const Modifiers: FunctionComponent<Props> = ({ removeCompleteTodos, resetApp }) => {
+const ProgressReset: FunctionComponent<Props> = ({ resetApp }) => {
   const [showModal, setShowModal] = useState(false);
 
   const handleConfirmation = () => {
@@ -32,9 +30,8 @@ const Modifiers: FunctionComponent<Props> = ({ removeCompleteTodos, resetApp }) 
     <div>
       {showModal && renderModal()}
       <TrashSVG onClick={() => setShowModal(true)} />
-      <EraserSVG onClick={removeCompleteTodos} />
     </div>
   );
 }
 
-export default connect(null, { removeCompleteTodos, resetApp })(Modifiers);
+export default connect(null, { resetApp })(ProgressReset);

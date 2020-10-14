@@ -15,4 +15,5 @@ declare interface AppState {
     [id: number]: Task;
   };
   expires: number;
+  isCountdownDisabled: boolean;
 }

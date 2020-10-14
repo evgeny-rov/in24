@@ -11,7 +11,9 @@ const loadState = () => {
       return undefined;
     }
     const parsedState: AppState = JSON.parse(serializedState);
-    const isStateExpired = parsedState.expires - Date.now() < 1000;
+    const isStateExpired =
+      !parsedState.isCountdownDisabled &&
+      parsedState.expires - Date.now() < 1000;
 
     return isStateExpired ? undefined : parsedState;
   } catch (err) {
@@ -31,8 +33,10 @@ const saveState = (state: AppState) => {
 const persistedState = loadState();
 const store = createStore(rootReducer, persistedState);
 
-store.subscribe(throttle(() => {
-  saveState(store.getState());
-}, 1000));
+store.subscribe(
+  throttle(() => {
+    saveState(store.getState());
+  }, 1000)
+);
 
 export default store;

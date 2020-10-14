@@ -1,4 +1,4 @@
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 
 export const StatusContainer = styled.div`
   position: absolute;
@@ -19,22 +19,19 @@ export const StatusContainer = styled.div`
   }
 `;
 
-export const StyledProgressBar = styled.progress`
+export const ProgressBarContainer = styled.div`
   position: absolute;
   top: 0;
-  border: none;
   width: 100%;
   height: 0.3rem;
+  background: rgba(255, 255, 255, 0.1);
+`;
 
-  &::-webkit-progress-bar {
-    background: rgba(255, 255, 255, 0.1);
-  }
-
-  &::-webkit-progress-value {
-    background: rgb(231, 71, 106);
-    transition: all 0.7s;
-    box-shadow: 0 0 7px 1px rgb(231, 71, 106);
-  }
+export const StyledProgressBar = styled.div<{ size: string }>`
+  height: 100%;
+  width: ${({ size }) => `${size}%`};
+  background: rgb(231, 71, 106);
+  transition: all 0.7s;
 `;
 
 export const StyledProgressText = styled.span<{ complete?: boolean }>`
