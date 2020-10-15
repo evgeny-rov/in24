@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { ReactComponent as ClockSVG } from '../assets/clock.svg';
 
 export const MenuContainer = styled.div`
   position: absolute;
@@ -16,15 +15,17 @@ export const MenuItem = styled.div`
 `;
 
 export const StyledToolbar = styled(MenuItem)`
+  box-sizing: border-box;
   height: 60%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 1.3rem;
 `;
 
-export const StyledCountdownMod = styled(ClockSVG)<{ disabled?: boolean }>`
-  & path {
-    fill: ${(props) => props.disabled ? 'rgb(231, 71, 106) !important' : 'none'};
+export const StyledCountdownMod = styled.div<{ active?: boolean }>`
+  svg path {
+    fill: ${({ active }) => active ? 'rgb(231, 71, 106) !important' : 'none'};
   }
 `;
 
@@ -34,7 +35,7 @@ export const StyledToolTip = styled.div`
   background: rgb(20, 20, 20);
   color: #fff;
   bottom: 100%;
-  right: 2rem;
+  right: 2.5rem;
   padding: 0.8rem;
   border-radius: 8px 8px 0;
   text-align: center;

@@ -3,26 +3,31 @@ import { connect } from 'react-redux';
 import { resetApp } from '../../redux/actions';
 import useCountdown from '../../hooks/useCountdown';
 import oneDayInMsToString from '../../utils/oneDayInMstoString';
+import { StyledCount } from '../../styled/status';
 
 interface Props {
   countAmount: number;
-  isCountdownDisabled: boolean;
+  isCountdownActive: boolean;
   resetApp: () => Action;
 }
 
 const Countdown: FunctionComponent<Props> = ({
   countAmount,
-  isCountdownDisabled,
+  isCountdownActive,
   resetApp,
 }) => {
-  const timeLeft = useCountdown(countAmount, resetApp);
+  const timeLeft = useCountdown(countAmount, resetApp, !isCountdownActive);
 
-  return <span>{!isCountdownDisabled && oneDayInMsToString(timeLeft)}</span>;
+  return (
+    <StyledCount active={isCountdownActive}>
+      {isCountdownActive ? oneDayInMsToString(timeLeft) : '00:00:00'}
+    </StyledCount>
+  );
 };
 
-const mapStateToProps = ({ expires, isCountdownDisabled }: AppState) => ({
+const mapStateToProps = ({ expires, isCountdownActive }: AppState) => ({
   countAmount: expires - Date.now(),
-  isCountdownDisabled,
+  isCountdownActive,
   key: expires,
 });
 

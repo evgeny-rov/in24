@@ -11,7 +11,7 @@ export default () => {
         <hr />
         <span>To remove todo swipe it to the right</span>
         <span>or click twice on the checkbox.</span>
-        <span>Use eraser to remove all complete todos.</span>
+        <span>Use recycle to remove all complete todos.</span>
       </StyledToolTip>
       <InfoSVG />
     </StyledInfoWrapper>
