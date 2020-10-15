@@ -12,12 +12,10 @@ export const GlobalStyle = createGlobalStyle`
   svg:not(#checkmark) {
     fill: rgb(143, 143, 143);
     transition: all 1s;
-    padding: 0.7rem;
 
     & path {
       fill: rgb(143, 143, 143);
       transition: all 1s;
-      padding: 0.7rem;
     }
 
     &:hover {

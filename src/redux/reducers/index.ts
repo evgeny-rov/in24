@@ -4,19 +4,23 @@ import {
   TOGGLE_TODO,
   RESET_APP,
   REMOVE_TODO,
-  REMOVE_COMPLETE_TODOS,
+  RECYCLE_PROGRESS,
   TOGGLE_COUNTDOWN,
 } from '../actions/actionTypes';
 import getNextDay from '../../utils/getNextDay';
 
 const initialState: AppState = {
   todosById: {
-    0: { id: 0, text: 'Make a to-do app just like everyone else', isComplete: true },
+    0: {
+      id: 0,
+      text: 'Make a to-do app just like everyone else',
+      isComplete: true,
+    },
     1: { id: 1, text: 'Add third to-do', isComplete: false },
   },
   allIds: [0, 1],
   expires: getNextDay(),
-  isCountdownDisabled: false,
+  isCountdownActive: true,
 };
 
 export default (state: AppState = initialState, action: Action) => {
@@ -50,9 +54,12 @@ export default (state: AppState = initialState, action: Action) => {
         todosById: omit(state.todosById, [id]),
       };
     }
-    case REMOVE_COMPLETE_TODOS: {
+    case RECYCLE_PROGRESS: {
       const { expires } = action.payload;
-      const incompleteIds = filter(state.allIds, (id) => !state.todosById[id].isComplete);
+      const incompleteIds = filter(
+        state.allIds,
+        (id) => !state.todosById[id].isComplete
+      );
       const incompletetodos = pick(state.todosById, [...incompleteIds]);
       return {
         ...state,
@@ -69,9 +76,11 @@ export default (state: AppState = initialState, action: Action) => {
       };
     }
     case TOGGLE_COUNTDOWN: {
+      const { expires } = action.payload;
       return {
         ...state,
-        isCountdownDisabled: !state.isCountdownDisabled,
+        expires,
+        isCountdownActive: !state.isCountdownActive,
       };
     }
     default: {

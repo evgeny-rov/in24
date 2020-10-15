@@ -19,6 +19,11 @@ export const StatusContainer = styled.div`
   }
 `;
 
+export const StyledCount = styled.span<{ active?: boolean }>`
+  text-decoration: ${({ active }) => active ? 'none' : 'line-through'};
+  color: ${({ active }) => active ? 'inherit' : '#555'};
+`;
+
 export const ProgressBarContainer = styled.div`
   position: absolute;
   top: 0;

@@ -12,8 +12,7 @@ const loadState = () => {
     }
     const parsedState: AppState = JSON.parse(serializedState);
     const isStateExpired =
-      !parsedState.isCountdownDisabled &&
-      parsedState.expires - Date.now() < 1000;
+      parsedState.isCountdownActive && parsedState.expires - Date.now() < 1000;
 
     return isStateExpired ? undefined : parsedState;
   } catch (err) {

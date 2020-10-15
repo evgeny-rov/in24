@@ -18,8 +18,8 @@ const ProgressReset: FunctionComponent<Props> = ({ resetApp }) => {
 
   const renderModal = () => {
     return (
-      <Modal 
-        message='Reset all of your progress?'
+      <Modal
+        message="Reset all of your progress?"
         onAccept={handleConfirmation}
         onRefuse={() => setShowModal(false)}
       />
@@ -29,9 +29,9 @@ const ProgressReset: FunctionComponent<Props> = ({ resetApp }) => {
   return (
     <div>
       {showModal && renderModal()}
-      <TrashSVG onClick={() => setShowModal(true)} />
+      <TrashSVG title="Reset Progress" onClick={() => setShowModal(true)} />
     </div>
   );
-}
+};
 
 export default connect(null, { resetApp })(ProgressReset);
