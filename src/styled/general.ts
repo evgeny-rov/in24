@@ -35,6 +35,7 @@ export const Overlay = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 `;
 
 export const AppWrapper = styled(Overlay)`
@@ -56,7 +57,7 @@ export const TodoContainer = styled.div`
   box-shadow: 0 0 20px 5px rgb(35, 35, 35);
   overflow: hidden;
 
-  @media (max-width: 35rem) {
+  @media (max-width: 600px), (max-height: 600px) {
     height: 100%;
     width: 100%;
     border-radius: 0;
