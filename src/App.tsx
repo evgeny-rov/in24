@@ -10,7 +10,6 @@ import AppReset from './components/Menu/AppReset';
 import Info from './components/Menu/Info';
 import AddTodo from './components/Menu/AddTodo';
 import Recycle from './components/Menu/Recycle';
-import ToggleCountdown from './components/Menu/ToggleCountdown';
 
 import { AppWrapper, BGLogo, TodoContainer } from './styled/general';
 
@@ -28,7 +27,6 @@ function App() {
           <Toolbar>
             <AppReset />
             <Recycle />
-            <ToggleCountdown />
             <Info />
           </Toolbar>
           <AddTodo />

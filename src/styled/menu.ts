@@ -23,12 +23,6 @@ export const StyledToolbar = styled(MenuItem)`
   padding: 0 1.3rem;
 `;
 
-export const StyledCountdownMod = styled.div<{ active?: boolean }>`
-  svg path {
-    fill: ${({ active }) => active ? 'rgb(231, 71, 106) !important' : 'none'};
-  }
-`;
-
 export const StyledToolTip = styled.div`
   display: none;
   position: absolute;

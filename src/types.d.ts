@@ -12,7 +12,7 @@ declare interface Todo {
 declare interface AppState {
   allIds: number[];
   todosById: {
-    [id: number]: Task;
+    [id: number]: Todo;
   };
   expires: number;
   isCountdownActive: boolean;
