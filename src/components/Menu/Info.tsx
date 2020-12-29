@@ -1,21 +1,24 @@
 import React from 'react';
 import { ReactComponent as InfoSVG } from '../../assets/info.svg';
+import useTypedT from '../../hooks/useTypedT';
 import { StyledToolTip, StyledInfoWrapper } from '../../styled/menu';
 
 export default () => {
+  const t = useTypedT();
+
   return (
     <StyledInfoWrapper>
       <StyledToolTip>
-        <span>Your todos will be reset in 24 hours.</span>
-        <span>Try to complete all of them in time!</span>
+        <span>{t('info_1')}</span>
+        <span>{t('info_2')}</span>
         <hr />
-        <span>To remove todo swipe it to the right</span>
-        <span>or click twice on the checkbox.</span>
+        <span>{t('info_3')}</span>
+        <span>{t('info_4')}</span>
         <hr />
-        <span>Use recycle to remove all complete todos.</span>
-        <span>You can turn off/on timer by clicking on it.</span>
+        <span>{t('info_5')}</span>
+        <span>{t('info_6')}</span>
       </StyledToolTip>
-      <InfoSVG title="Info"/>
+      <InfoSVG title={t('info_hover')}/>
     </StyledInfoWrapper>
   );
 };

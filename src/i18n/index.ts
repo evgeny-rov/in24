@@ -15,8 +15,8 @@ export type TranslationSchema = {
   recycle_hover: string;
   reset_hover: string;
   reset_message: string;
-  modal_confirm: string;
-  modal_deny: string;
+  confirm: string;
+  deny: string;
   completion_done: string;
   completion_empty: string;
 };
@@ -42,29 +42,29 @@ const resources: ResourcesStrct = {
       recycle_hover: 'Recycle Progress',
       reset_hover: 'Reset Progress',
       reset_message: 'Reset all of your progress?',
-      modal_confirm: 'Yes',
-      modal_deny: 'No',
-      completion_done: 'Take a break or add new todos!',
+      confirm: 'Yes',
+      deny: 'No',
+      completion_done: 'Good job! You deserve a cup of ☕',
       completion_empty: 'Add some todos',
     },
   },
   ru: {
     translation: {
-      add_action: 'Добавь',
-      input_placeholder: 'Новая заметка...',
+      add_action: 'Добавить',
+      input_placeholder: 'Новая запись...',
       info_hover: 'Инфо',
-      info_1: 'Твой список будет сброшен через 24 часа.',
-      info_2: 'Попробуй выполнить все вовремя!',
-      info_3: 'Чтобы удалить заметку смахни ее вправо',
+      info_1: 'Список будет сброшен через 24 часа.',
+      info_2: 'Попробуй выполнить всё вовремя!',
+      info_3: 'Чтобы удалить запись смахни ее вправо',
       info_4: 'или щелкни дважды на галочку.',
-      info_5: 'Используй утилизацию для очистки выполненных заметок.',
-      info_6: 'Ты можешь вкл/выкл таймер нажав на него',
+      info_5: 'Утилизация очищает все выполненные записи.',
+      info_6: 'Ты можешь вкл/выкл таймер нажав на него.',
       recycle_hover: 'Утилизировать',
       reset_hover: 'Сбросить',
       reset_message: 'Сбросить весь список?',
-      modal_confirm: 'Да',
-      modal_deny: 'Нет',
-      completion_done: 'Передохни или добавь новых заметок!',
+      confirm: 'Да',
+      deny: 'Нет',
+      completion_done: 'Эй! ты заслужил чашечку ☕',
       completion_empty: 'Список пуст, добавь что-нибудь',
     },
   },

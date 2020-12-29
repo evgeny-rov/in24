@@ -4,16 +4,17 @@ export const StatusContainer = styled.div`
   position: absolute;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   box-sizing: border-box;
   user-select: none;
   width: 100%;
-  height: 2rem;
+  height: 4rem;
   top: 0;
   opacity: 0.9;
   z-index: 2;
 
   & span {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     padding: 1.5rem;
     transition: all 0.5s;
   }

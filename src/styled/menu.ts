@@ -32,7 +32,7 @@ export const StyledToolTip = styled.div`
   right: 2.5rem;
   padding: 0.8rem;
   border-radius: 8px 8px 0;
-  text-align: center;
+  text-align: left;
   font-size: 0.9rem;
 
   & span {

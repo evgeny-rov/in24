@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { resetApp } from '../../redux/actions';
 import { ReactComponent as TrashSVG } from '../../assets/trash-can.svg';
 import Modal from '../Modal';
+import useTypedT from '../../hooks/useTypedT';
 
 interface Props {
   resetApp: () => Action;
@@ -10,6 +11,7 @@ interface Props {
 
 const ProgressReset: FunctionComponent<Props> = ({ resetApp }) => {
   const [showModal, setShowModal] = useState(false);
+  const t = useTypedT();
 
   const handleConfirmation = () => {
     setShowModal(false);
@@ -19,7 +21,7 @@ const ProgressReset: FunctionComponent<Props> = ({ resetApp }) => {
   const renderModal = () => {
     return (
       <Modal
-        message="Reset all of your progress?"
+        message={t('reset_message')}
         onAccept={handleConfirmation}
         onRefuse={() => setShowModal(false)}
       />
@@ -29,7 +31,7 @@ const ProgressReset: FunctionComponent<Props> = ({ resetApp }) => {
   return (
     <div>
       {showModal && renderModal()}
-      <TrashSVG title="Reset Progress" onClick={() => setShowModal(true)} />
+      <TrashSVG title={t('reset_hover')} onClick={() => setShowModal(true)} />
     </div>
   );
 };
