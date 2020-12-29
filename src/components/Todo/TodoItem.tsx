@@ -10,9 +10,13 @@ interface Props extends Todo {
   removeTodo: (id: number) => Action;
 }
 
-const itemAnims: any = {
-  hidden: { x: -200 },
-  show: { x: 0 },
+const getRandomItemAnim = () => {
+  const randomXValue = Math.round(Math.random()) > 0 ? 100 : -100;
+
+  return {
+    hidden: { x: randomXValue, opacity: 0 },
+    show: { x: 0, opacity: 1 },
+  };
 };
 
 const Todo: FunctionComponent<Props> = ({
@@ -29,7 +33,7 @@ const Todo: FunctionComponent<Props> = ({
   return (
     <StyledListItem
       isComplete={isComplete}
-      variants={itemAnims}
+      variants={getRandomItemAnim()}
       role="presentation"
       onClick={() => toggleTodo(id, !isComplete)}
       onDragEnd={(e, info) => info.offset.x > 150 && removeTodo(id)}
