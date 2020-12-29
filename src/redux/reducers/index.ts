@@ -71,7 +71,9 @@ export default (state: AppState = initialState, action: Action) => {
     case RESET_APP: {
       const { expires } = action.payload;
       return {
-        ...initialState,
+        ...state,
+        allIds: [],
+        todosById: {},
         expires,
       };
     }
