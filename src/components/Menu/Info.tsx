@@ -15,7 +15,7 @@ export default () => {
         <span>Use recycle to remove all complete todos.</span>
         <span>You can turn off/on timer by clicking on it.</span>
       </StyledToolTip>
-      <InfoSVG />
+      <InfoSVG title="Info"/>
     </StyledInfoWrapper>
   );
 };

@@ -1,4 +1,5 @@
 import React from 'react';
+import './i18n';
 import Menu from './components/containers/Menu';
 import Status from './components/containers/Status';
 import Toolbar from './components/containers/Toolbar';
