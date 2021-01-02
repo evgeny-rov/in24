@@ -14,21 +14,20 @@ const AddTodo: FunctionComponent<Props> = ({ addTodo }) => {
 
   const handleAddTodo = (e: React.SyntheticEvent) => {
     e.preventDefault();
-    addTodo(text);
+    const preparedText = text.trim();
+    preparedText && addTodo(preparedText);
     setText('');
   };
 
   return (
     <form onSubmit={handleAddTodo}>
       <StyledInputField
-        className="input field"
         type="text"
         placeholder={`${t('input_placeholder')}`}
         value={text}
         onChange={(e) => setText(e.target.value)}
       />
       <StyledInputBtn
-        className="input sbmt-btn"
         type="submit"
         value={`${t('add_action')}`}
         disabled={text.length < 2}
