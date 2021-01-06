@@ -24,7 +24,6 @@ export const StyledToolbar = styled(MenuItem)`
 `;
 
 export const StyledToolTip = styled.div`
-  display: none;
   position: absolute;
   background: rgb(20, 20, 20);
   color: #fff;
@@ -36,12 +35,6 @@ export const StyledToolTip = styled.div`
   font-size: 0.9rem;
 
   & span {
-    display: block;
-  }
-`;
-
-export const StyledInfoWrapper = styled.div`
-  &:hover ${StyledToolTip} {
     display: block;
   }
 `;
