@@ -31,7 +31,7 @@ export const StyledTodoList = styled(motion.ul)`
     background: grey;
   }
 
-  @media(max-height: 450px) {
+  @media (max-height: 450px) {
     height: 50%;
   }
 `;
@@ -45,7 +45,8 @@ export const StyledListItem = styled(motion.li)<TodoItemProps>`
   text-decoration: ${(props) => (props.isComplete ? 'line-through' : 'none')};
   color: ${(props) => (props.isComplete ? 'grey' : 'white')};
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     background: rgba(150, 150, 150, 0.1);
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
   }
@@ -78,17 +79,8 @@ export const CustomCheckbox = styled.label<TodoItemProps>`
     props.isComplete ? '0 0 4px rgb(231, 71, 106)' : 'none'};
   transition: all 0.2s;
 
-  input {
-    display: none;
-    appearance: none;
-  }
-
-  input:checked ~ svg {
-    visibility: visible;
-  }
-
   svg {
-    visibility: hidden;
+    visibility: ${props => props.isComplete ? 'visible' : 'hidden'};
     position: relative;
     pointer-events: none;
     fill: none;

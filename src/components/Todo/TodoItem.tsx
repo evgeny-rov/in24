@@ -42,14 +42,11 @@ const Todo: FunctionComponent<Props> = ({
       dragElastic={1}
       dragConstraints={{ left: 0, right: 0 }}
     >
-      <CustomCheckbox isComplete={isComplete}>
-        <input
-          type="checkbox"
-          name="complete"
-          readOnly
-          checked={isComplete}
-          onClick={() => onDoubleClick(doubleClickHandler)}
-        />
+      <CustomCheckbox
+        role="checkbox"
+        isComplete={isComplete}
+        onClick={() => onDoubleClick(doubleClickHandler)}
+      >
         <CheckmarkSVG />
       </CustomCheckbox>
       <span>{text}</span>
