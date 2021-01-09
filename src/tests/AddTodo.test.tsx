@@ -2,9 +2,9 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom/extend-expect';
-import AddTodo from '../AddTodo';
-import createReduxTestProvider from '../../../setupTests';
-import TodoList from '../../Todo/TodoList';
+import AddTodo from '../components/Menu/AddTodo';
+import createReduxTestProvider from '../setupTests';
+import TodoList from '../components/Todo/TodoList';
 
 const testStore: AppState = {
   allIds: [],

@@ -6,8 +6,8 @@ import {
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom/extend-expect';
-import createReduxTestProvider from '../../../setupTests';
-import TodoList from '../../Todo/TodoList';
+import createReduxTestProvider from '../setupTests';
+import TodoList from '../components/Todo/TodoList';
 
 beforeEach(() => {
   const testStore: AppState = {
@@ -52,6 +52,8 @@ test('it can be removed by double click on the checkbox', () => {
   expect(screen.getByRole('list').children).toHaveLength(0);
 });
 
+/*
 test('it can be removed by dragging right', () => {
   expect('item to be removed').not.toEqual('but i do not know how to test it');
 });
+*/

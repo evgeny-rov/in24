@@ -2,12 +2,12 @@ import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom/extend-expect';
-import createReduxTestProvider from '../../../setupTests';
-import TodoList from '../../Todo/TodoList';
-import AppReset from '../AppReset';
-import '../../../i18n';
-import Info from '../Info';
-import Recycle from '../Recycle';
+import createReduxTestProvider from '../setupTests';
+import TodoList from '../components/Todo/TodoList';
+import AppReset from '../components/Menu/AppReset';
+import '../i18n';
+import Info from '../components/Menu/Info';
+import Recycle from '../components/Menu/Recycle';
 
 describe('Toolbar', () => {
   beforeEach(() => {
@@ -60,11 +60,11 @@ describe('Toolbar', () => {
 
   describe('Info', () => {
     it('should display tooltip on hover', async () => {
-      expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+      expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
       fireEvent.mouseOver(screen.getByTitle('Info'));
-      expect(screen.getByRole('dialog')).toBeInTheDocument();
+      expect(screen.getByRole('tooltip')).toBeInTheDocument();
       fireEvent.mouseOut(screen.getByTitle('Info'));
-      expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+      expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
     });
   });
 

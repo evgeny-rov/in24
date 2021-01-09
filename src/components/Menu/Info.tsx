@@ -13,7 +13,7 @@ export default () => {
       onMouseOver={() => setShowTooltip(true)}
       onMouseOut={() => setShowTooltip(false)}
     >
-      <StyledToolTip role="dialog" hidden={!showTooltip}>
+      <StyledToolTip role="tooltip" hidden={!showTooltip}>
         <span>{t('info_1')}</span>
         <span>{t('info_2')}</span>
         <hr />
