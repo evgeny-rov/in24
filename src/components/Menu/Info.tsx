@@ -1,14 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ReactComponent as InfoSVG } from '../../assets/info.svg';
 import useTypedT from '../../hooks/useTypedT';
-import { StyledToolTip, StyledInfoWrapper } from '../../styled/menu';
+import { StyledToolTip } from '../../styled/menu';
 
 export default () => {
+  const [showTooltip, setShowTooltip] = useState(false);
   const t = useTypedT();
 
   return (
-    <StyledInfoWrapper>
-      <StyledToolTip>
+    <div
+      title={t('info_hover')}
+      onMouseOver={() => setShowTooltip(true)}
+      onMouseOut={() => setShowTooltip(false)}
+    >
+      <StyledToolTip role="tooltip" hidden={!showTooltip}>
         <span>{t('info_1')}</span>
         <span>{t('info_2')}</span>
         <hr />
@@ -18,7 +23,7 @@ export default () => {
         <span>{t('info_5')}</span>
         <span>{t('info_6')}</span>
       </StyledToolTip>
-      <InfoSVG title={t('info_hover')}/>
-    </StyledInfoWrapper>
+      <InfoSVG />
+    </div>
   );
 };

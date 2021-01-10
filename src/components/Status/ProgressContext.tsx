@@ -9,7 +9,7 @@ interface Props {
   complete: number;
 }
 
-const ProgressBar: FunctionComponent<Props> = ({ total, complete }) => {
+const ProgressContext: FunctionComponent<Props> = ({ total, complete }) => {
   const t = useTypedT();
 
   const getTextContentByProgress = (total: number, complete: number) => {
@@ -22,7 +22,7 @@ const ProgressBar: FunctionComponent<Props> = ({ total, complete }) => {
   };
 
   return (
-    <StyledProgressText complete={total - complete === 0}>
+    <StyledProgressText data-testid="context" complete={total - complete === 0}>
       {getTextContentByProgress(total, complete)}
     </StyledProgressText>
   );
@@ -30,4 +30,4 @@ const ProgressBar: FunctionComponent<Props> = ({ total, complete }) => {
 
 const mapStateToProps = (state: AppState) => progressSelector(state);
 
-export default connect(mapStateToProps)(ProgressBar);
+export default connect(mapStateToProps)(ProgressContext);

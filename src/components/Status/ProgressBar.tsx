@@ -12,7 +12,10 @@ interface Props {
 const ProgressBar: FunctionComponent<Props> = ({ total, complete }) => {
   return (
     <ProgressBarContainer>
-      <StyledProgressBar size={getPercentage(complete, total).toString()} />
+      <StyledProgressBar
+        role="progressbar"
+        size={getPercentage(complete, total).toString()}
+      />
     </ProgressBarContainer>
   );
 };
