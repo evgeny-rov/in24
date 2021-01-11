@@ -1,6 +1,6 @@
 import React, { useState, FunctionComponent } from 'react';
 import { connect } from 'react-redux';
-import useTypedT from '../../hooks/useTypedT';
+import useTypedTranslation from '../../hooks/useTypedTranslation';
 import { addTodo } from '../../redux/actions';
 import { StyledInputField, StyledInputBtn } from '../../styled/menu';
 
@@ -10,7 +10,7 @@ interface Props {
 
 const AddTodo: FunctionComponent<Props> = ({ addTodo }) => {
   const [text, setText] = useState('');
-  const t = useTypedT();
+  const t = useTypedTranslation();
 
   const handleAddTodo = (e: React.SyntheticEvent) => {
     e.preventDefault();

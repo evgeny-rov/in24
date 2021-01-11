@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { connect } from 'react-redux';
-import useTypedT from '../../hooks/useTypedT';
+import useTypedTranslation from '../../hooks/useTypedTranslation';
 import { progressSelector } from '../../selectors';
 import { StyledProgressText } from '../../styled/status';
 
@@ -10,7 +10,7 @@ interface Props {
 }
 
 const ProgressContext: FunctionComponent<Props> = ({ total, complete }) => {
-  const t = useTypedT();
+  const t = useTypedTranslation();
 
   const getTextContentByProgress = (total: number, complete: number) => {
     if (total < 1) {

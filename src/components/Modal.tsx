@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import ReactDOM from 'react-dom';
-import useTypedT from '../hooks/useTypedT';
+import useTypedTranslation from '../hooks/useTypedTranslation';
 import { ModalOverlay, ModalText, ModalBtn } from '../styled/modal';
 
 interface Props {
@@ -11,7 +11,7 @@ interface Props {
 
 const Modal: FunctionComponent<Props> = ({ message, onAccept, onRefuse }) => {
   const modalRoot: HTMLElement | null = document.getElementById('modal-root');
-  const t = useTypedT();
+  const t = useTypedTranslation();
 
   const modalContent = (
     <ModalOverlay>

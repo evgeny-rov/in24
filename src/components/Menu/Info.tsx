@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { ReactComponent as InfoSVG } from '../../assets/info.svg';
-import useTypedT from '../../hooks/useTypedT';
+import useTypedTranslation from '../../hooks/useTypedTranslation';
 import { StyledToolTip } from '../../styled/menu';
 
 export default () => {
   const [showTooltip, setShowTooltip] = useState(false);
-  const t = useTypedT();
+  const t = useTypedTranslation();
 
   return (
     <div
