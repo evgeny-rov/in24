@@ -1,13 +1,10 @@
 import React from 'react';
-import {
-  fireEvent,
-  render,
-  screen,
-} from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom/extend-expect';
 import createReduxTestProvider from '../setupTests';
 import TodoList from '../components/Todo/TodoList';
+import { drag, MockDrag } from './utils';
 
 beforeEach(() => {
   const testStore: AppState = {
@@ -21,7 +18,9 @@ beforeEach(() => {
 
   render(
     <TestStoreProvider>
-      <TodoList />
+      <MockDrag>
+        <TodoList />
+      </MockDrag>
     </TestStoreProvider>
   );
 });
@@ -52,8 +51,11 @@ test('it can be removed by double click on the checkbox', () => {
   expect(screen.getByRole('list').children).toHaveLength(0);
 });
 
-/*
-test('it can be removed by dragging right', () => {
-  expect('item to be removed').not.toEqual('but i do not know how to test it');
+test('it can be removed by dragging right', async () => {
+  expect(screen.getByRole('list').children).toHaveLength(1);
+  
+  const pointer = await drag(screen.getByRole('presentation')).to(300, 0);
+  pointer.end();
+
+  expect(screen.getByRole('list').children).toHaveLength(0);
 });
-*/

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { resetApp } from '../../redux/actions';
 import { ReactComponent as TrashSVG } from '../../assets/trash-can.svg';
 import Modal from '../Modal';
-import useTypedT from '../../hooks/useTypedT';
+import useTypedTranslation from '../../hooks/useTypedTranslation';
 
 interface Props {
   resetApp: () => Action;
@@ -11,7 +11,7 @@ interface Props {
 
 const ProgressReset: FunctionComponent<Props> = ({ resetApp }) => {
   const [showModal, setShowModal] = useState(false);
-  const t = useTypedT();
+  const t = useTypedTranslation();
 
   const handleConfirmation = () => {
     setShowModal(false);

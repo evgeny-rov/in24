@@ -67,7 +67,7 @@ describe('Status', () => {
 
       expect(screen.getByTestId('context')).toHaveTextContent('0/1');
       userEvent.click(screen.getByRole('presentation'));
-      expect(screen.getByTestId('context')).toHaveTextContent(/good job/i);
+      expect(screen.getByTestId('context')).toHaveTextContent(/you deserve a cup/i);
     });
 
     it('should display empty message', () => {

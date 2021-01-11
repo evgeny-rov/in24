@@ -10,7 +10,7 @@ interface Props {
   todos: Array<Todo>;
 }
 
-const animsContainer: any = {
+const animsContainer = {
   show: {
     transition: {
       staggerChildren: 0.1,
@@ -19,12 +19,12 @@ const animsContainer: any = {
 };
 
 const TodoList: FunctionComponent<Props> = ({ todos }) => {
-  const listRef: any = useRef(null);
-  const scrollFixHandler = useFramerMobileScrollFix(listRef);
+  const listRef = useRef<HTMLUListElement>(null);
+  const scrollFixHandler = useFramerMobileScrollFix(listRef.current);
   const previousTodosLength = usePrevious(todos.length);
 
   useEffect(() => {
-    if (todos.length > previousTodosLength) {
+    if (listRef.current && todos.length > previousTodosLength) {
       listRef.current.scrollTop = listRef.current.scrollHeight;
     }
   }, [todos.length, previousTodosLength]);
