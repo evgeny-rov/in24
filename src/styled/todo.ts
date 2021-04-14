@@ -40,7 +40,7 @@ export const StyledListItem = styled(motion.li)<TodoItemProps>`
   display: flex;
   align-items: baseline;
   border-radius: 5px;
-  padding: 0 0.5rem;
+  padding: 0.2rem 0.7rem;
   cursor: pointer;
   text-decoration: ${(props) => (props.isComplete ? 'line-through' : 'none')};
   color: ${(props) => (props.isComplete ? 'grey' : 'white')};
@@ -52,6 +52,7 @@ export const StyledListItem = styled(motion.li)<TodoItemProps>`
   }
 
   span {
+    font-size: 1.05em;
     transition: all 0.4s;
     word-break: break-word;
   }
@@ -67,8 +68,8 @@ export const CustomCheckbox = styled.label<TodoItemProps>`
   justify-content: center;
   flex-shrink: 0;
   margin-right: 0.9rem;
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   border-radius: 2px;
   background: ${(props) => (props.isComplete ? 'rgb(231, 71, 106)' : 'none')};
   border: ${(props) =>
