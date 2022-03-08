@@ -4,7 +4,7 @@ import {
   TOGGLE_TODO,
   RESET_APP,
   REMOVE_TODO,
-  RECYCLE_PROGRESS,
+  REMOVE_COMPLETE,
   TOGGLE_COUNTDOWN,
 } from '../actions/actionTypes';
 import getNextDay from '../../utils/getNextDay';
@@ -54,12 +54,9 @@ export default (state: AppState = initialState, action: Action) => {
         todosById: omit(state.todosById, [id]),
       };
     }
-    case RECYCLE_PROGRESS: {
+    case REMOVE_COMPLETE: {
       const { expires } = action.payload;
-      const incompleteIds = filter(
-        state.allIds,
-        (id) => !state.todosById[id].isComplete
-      );
+      const incompleteIds = filter(state.allIds, (id) => !state.todosById[id].isComplete);
       const incompletetodos = pick(state.todosById, [...incompleteIds]);
       return {
         ...state,

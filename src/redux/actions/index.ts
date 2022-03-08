@@ -3,7 +3,7 @@ import {
   TOGGLE_TODO,
   RESET_APP,
   REMOVE_TODO,
-  RECYCLE_PROGRESS,
+  REMOVE_COMPLETE,
   TOGGLE_COUNTDOWN,
 } from './actionTypes';
 
@@ -43,8 +43,8 @@ export const removeTodo = (id: number) => ({
   },
 });
 
-export const recycle = () => ({
-  type: RECYCLE_PROGRESS,
+export const removeComplete = () => ({
+  type: REMOVE_COMPLETE,
   payload: {
     expires: getNextDay(),
   },

@@ -35,10 +35,13 @@ test('it should render bg logo', () => {
   expect(screen.getByText('in24')).toBeInTheDocument();
 });
 
-test('it should reset app if countdown time runs out', async () => {
+test('it should remove complete todos when countdown runs out', async () => {
   const testStore: AppState = {
-    allIds: [0],
-    todosById: { 0: { id: 0, text: 'poop', isComplete: false } },
+    allIds: [0, 1],
+    todosById: {
+      0: { id: 0, text: 'poop', isComplete: false },
+      1: { id: 1, text: 'poop2', isComplete: true },
+    },
     expires: Date.now() + 2000,
     isCountdownActive: true,
   };
@@ -52,7 +55,7 @@ test('it should reset app if countdown time runs out', async () => {
 
   const { rerender } = render(<Component />);
 
-  expect(screen.getByRole('list').children).toHaveLength(1);
+  expect(screen.getByRole('list').children).toHaveLength(2);
 
   await act(async () => {
     await new Promise((res, rej) =>
@@ -63,5 +66,5 @@ test('it should reset app if countdown time runs out', async () => {
     );
   });
 
-  expect(screen.getByRole('list').children).toHaveLength(0);
+  expect(screen.getByRole('list').children).toHaveLength(1);
 });
