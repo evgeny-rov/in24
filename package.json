@@ -17,7 +17,7 @@
     "framer-motion": "^2.3.0",
     "i18next": "^19.8.4",
     "i18next-browser-languagedetector": "^6.0.1",
-    "lodash": "^4.17.19",
+    "lodash": "^4.17.23",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-i18next": "^11.8.5",
